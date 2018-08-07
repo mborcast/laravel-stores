@@ -12,4 +12,12 @@ class Product extends Model {
         'created_at',
         'updated_at'
     ];
+    public function sales() {
+        return $this->belongsToMany(
+            'LaravelStores\Web\Resources\Sales\Sale',
+            'details',
+            'product_id',
+            'sales_id'
+        )->withPivot('units');
+    }
 }
