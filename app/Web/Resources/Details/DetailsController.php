@@ -1,10 +1,10 @@
 <?php
 
-namespace LaravelDetails\Web\Resources\Details;
+namespace LaravelStores\Web\Resources\Details;
 
-use LaravelDetails\Http\Controllers\Controller;
+use LaravelStores\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use LaravelDetails\Web\Resources\Details\Services\DetailsServiceInterface;
+use LaravelStores\Web\Resources\Details\Services\DetailsServiceInterface;
 
 class DetailsController extends Controller {
     private $_detailsService;

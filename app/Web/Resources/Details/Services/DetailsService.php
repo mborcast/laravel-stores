@@ -1,9 +1,8 @@
 <?php
 
-namespace LaravelDetails\Web\Resources\Details\Services;
+namespace LaravelStores\Web\Resources\Details\Services;
 
-use LaravelDetails\Web\Resources\Details\Services\DetailsServiceInterface;
-use LaravelDetails\Web\Resources\Details\Repositories\DetailsRepositoryInterface;
+use LaravelStores\Web\Resources\Details\Repositories\DetailsRepositoryInterface;
 
 class DetailsService implements DetailsServiceInterface {
 

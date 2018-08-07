@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDetails\Web\Resources\Details\Services;
+namespace LaravelStores\Web\Resources\Details\Services;
 
 interface DetailsServiceInterface {
     function create($data);

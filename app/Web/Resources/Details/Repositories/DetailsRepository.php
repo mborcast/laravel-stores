@@ -1,7 +1,7 @@
 <?php 
 
-namespace LaravelDetails\Web\Resources\Details\Repositories;
-use LaravelDetails\Web\Resources\Details\Detail;
+namespace LaravelStores\Web\Resources\Details\Repositories;
+use LaravelStores\Web\Resources\Details\Detail;
 
 class DetailsRepository implements DetailsRepositoryInterface {
     public function create($data) {

@@ -1,17 +1,17 @@
 <?php
-namespace LaravelDetails\Web\Resources\Details;
+namespace LaravelStores\Web\Resources\Details;
 
 use Illuminate\Support\ServiceProvider;
 
 class DetailsServiceProvider extends ServiceProvider {
     public function register() {
         $this->app->bind(
-            'LaravelDetails\Web\Resources\Details\Repositories\DetailsRepositoryInterface',
-            'LaravelDetails\Web\Resources\Details\Repositories\DetailsRepository'
+            'LaravelStores\Web\Resources\Details\Repositories\DetailsRepositoryInterface',
+            'LaravelStores\Web\Resources\Details\Repositories\DetailsRepository'
         );
         $this->app->bind(
-            'LaravelDetails\Web\Resources\Details\Services\DetailsServiceInterface',
-            'LaravelDetails\Web\Resources\Details\Services\DetailsService'
+            'LaravelStores\Web\Resources\Details\Services\DetailsServiceInterface',
+            'LaravelStores\Web\Resources\Details\Services\DetailsService'
         );
     }
 }

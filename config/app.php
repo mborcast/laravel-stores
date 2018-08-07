@@ -181,7 +181,8 @@ return [
         LaravelStores\Web\Resources\Stores\StoresServiceProvider::class,
         LaravelStores\Web\Resources\Products\ProductsServiceProvider::class,
         LaravelStores\Web\Resources\Customers\CustomersServiceProvider::class,
-        LaravelStores\Web\Resources\Sales\SalesServiceProvider::class
+        LaravelStores\Web\Resources\Sales\SalesServiceProvider::class,
+        LaravelStores\Web\Resources\Details\DetailsServiceProvider::class
     ],
 
     /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDetails\Web\Resources\Details\Repositories;
+namespace LaravelStores\Web\Resources\Details\Repositories;
 
 interface DetailsRepositoryInterface {
     function create($data);
