@@ -1,8 +1,7 @@
 <?php 
 
 namespace LaravelStores\Web\Resources\Products\Repositories;
-
-use LaravelStores\Product;
+use LaravelStores\Web\Resources\Products\Product;
 
 class ProductsRepository implements ProductsRepositoryInterface {
     public function create($data) {
