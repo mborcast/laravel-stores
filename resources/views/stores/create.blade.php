@@ -2,7 +2,7 @@
 @section('title', 'Customers')
 @section('content')
 
-<h1>Create customer</h1>
+<h1>Create store</h1>
 
 @endsection
 
