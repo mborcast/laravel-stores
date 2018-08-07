@@ -18,6 +18,6 @@ class Store extends Model {
             'sales',
             'store_id',
             'customer_id'
-        );
+        )->withPivot('date');
     }
 }
