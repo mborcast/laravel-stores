@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelDetails\Web\Resources\Details;
+namespace LaravelStores\Web\Resources\Details;
 
 use Illuminate\Database\Eloquent\Model;
 
