@@ -32,3 +32,16 @@ $factory->define(
         'price' => $faker->randomFloat(2, 50, 1000)
     ];
 });
+$factory->define(
+    LaravelStores\Web\Resources\Sales\Sale::class, 
+    function (Faker\Generator $faker) {
+    return [
+        'store_id' => function () {
+            return factory(LaravelStores\Web\Resources\Stores\Store::class)->create()->id;
+        },
+        'customer_id' => function () {
+            return factory(LaravelStores\Web\Resources\Customers\Customer::class)->create()->id;
+        },
+        'date' => $faker->date
+    ];
+});
