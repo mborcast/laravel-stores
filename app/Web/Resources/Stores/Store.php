@@ -12,4 +12,12 @@ class Store extends Model {
         'created_at',
         'updated_at'
     ];
+    public function customers() {
+        return $this->belongsToMany(
+            'LaravelStores\Web\Resources\Customers\Customer',
+            'sales',
+            'store_id',
+            'customer_id'
+        );
+    }
 }
