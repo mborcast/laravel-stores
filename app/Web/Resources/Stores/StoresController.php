@@ -13,6 +13,6 @@ class StoresController extends Controller {
         $this->_storesService = $storesService;
     }
     public function index() {
-        return view('welcome');
+        return view('stores.index');
     }
 }

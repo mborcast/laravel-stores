@@ -13,6 +13,6 @@ class ProductsController extends Controller {
         $this->_productsService = $productsService;
     }
     public function index() {
-        return view('welcome');
+        return view('products.index');
     }
 }

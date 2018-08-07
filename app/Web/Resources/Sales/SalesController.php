@@ -13,6 +13,6 @@ class SalesController extends Controller {
         $this->_salesService = $salesService;
     }
     public function index() {
-        return view('welcome');
+        return view('sales.index');
     }
 }
