@@ -178,8 +178,8 @@ return [
         LaravelStores\Providers\RouteServiceProvider::class,
 
         // Resource providers
-        LaravelStores\Web\Resources\Products\ProductsServiceProvider::class,
         LaravelStores\Web\Resources\Stores\StoresServiceProvider::class,
+        LaravelStores\Web\Resources\Products\ProductsServiceProvider::class,
         LaravelStores\Web\Resources\Customers\CustomersServiceProvider::class
     ],
 
