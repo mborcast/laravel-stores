@@ -177,6 +177,8 @@ return [
         LaravelStores\Providers\EventServiceProvider::class,
         LaravelStores\Providers\RouteServiceProvider::class,
 
+        // Resource providers
+        LaravelStores\Web\Resources\Products\ProductsServiceProvider::class
     ],
 
     /*
