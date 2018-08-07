@@ -45,3 +45,16 @@ $factory->define(
         'date' => $faker->date
     ];
 });
+$factory->define(
+    LaravelStores\Web\Resources\Details\Detail::class, 
+    function (Faker\Generator $faker) {
+    return [
+        'product_id' => function () {
+            return factory(LaravelStores\Web\Resources\Products\Product::class)->create()->id;
+        },
+        'sales_id' => function () {
+            return factory(LaravelStores\Web\Resources\Sales\Sale::class)->create()->id;
+        },
+        'units' => $faker->numberBetween(1, 50)
+    ];
+});
