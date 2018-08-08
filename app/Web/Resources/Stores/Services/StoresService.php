@@ -21,21 +21,16 @@ class StoresService implements StoresServiceInterface {
     public function get($id) {
         $lStore = $this->_stores->get($id);
         if ($lStore == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
+            return view('404');
         }
-        return response()->json(
-            $lStore,
-            200
-        );
+        return view('stores.details', [
+            'store' => $lStore
+        ]);
     }
-    public function getAll() {
-        return response()->json(
-            $this->_stores->getAll(), 
-            200
-        );
+    public function getAll() { 
+        return view('stores.index', [
+            'stores' => $this->_stores->getAll()
+        ]);
     }
     public function update($data, $id) {
         $lStore = $this->_stores->update($data, $id);

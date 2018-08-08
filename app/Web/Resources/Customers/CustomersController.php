@@ -15,4 +15,7 @@ class CustomersController extends Controller {
     public function index() {
         return $this->_customersService->getAll();
     }
+    public function find($id) {
+        return $this->_customersService->get($id);
+    }
 }

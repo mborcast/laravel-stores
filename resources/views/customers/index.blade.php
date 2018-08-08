@@ -1,7 +1,5 @@
-@extends('layout')
-@section('title', 'Customers')
+@extends('layout', ['title' => 'customers'])
 @section('content')
-
 <section class="container">
     <header class="row">
         <div class="col">
@@ -15,7 +13,12 @@
             @else    
                 <ul>
                     @foreach ($customers as $customer)
-                        <li>{{ $customer->name }}</li>
+                    <li>
+                        {{ $customer->id }} - 
+                        <a href="{{ route('customers-details', $customer->id) }}">
+                            {{ $customer->name }}
+                        </a>
+                    </li>
                     @endforeach
                 </ul>
             @endif

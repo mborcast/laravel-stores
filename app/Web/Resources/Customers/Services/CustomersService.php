@@ -19,17 +19,13 @@ class CustomersService implements CustomersServiceInterface {
         );
     }
     public function get($id) {
-        $lCustomer = $this->_customers->get($id);
-        if ($lCustomer == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
+        $lCustomers = $this->_customers->get($id);
+        if ($lCustomers == null) {
+            return view('404');
         }
-        return response()->json(
-            $lCustomer,
-            200
-        );
+        return view('customers.details', [
+            'customer' => $lCustomers
+        ]);
     }
     public function getAll() {
         $customers = $this->_customers->getAll();

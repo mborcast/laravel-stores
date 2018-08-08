@@ -13,6 +13,9 @@ class StoresController extends Controller {
         $this->_storesService = $storesService;
     }
     public function index() {
-        return view('stores.index');
+        return $this->_storesService->getAll();
+    }
+    public function find($id) {
+        return $this->_storesService->get($id);
     }
 }
