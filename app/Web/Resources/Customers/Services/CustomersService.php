@@ -32,10 +32,9 @@ class CustomersService implements CustomersServiceInterface {
         );
     }
     public function getAll() {
-        return response()->json(
-            $this->_customers->getAll(), 
-            200
-        );
+        $customers = $this->_customers->getAll();
+
+        return view('customers.index', compact('customers'));
     }
     public function update($data, $id) {
         $lCustomer = $this->_customers->update($data, $id);

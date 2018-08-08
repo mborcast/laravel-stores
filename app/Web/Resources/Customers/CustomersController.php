@@ -13,6 +13,6 @@ class CustomersController extends Controller {
         $this->_customersService = $customersService;
     }
     public function index() {
-        return view('customers.index');
+        return $this->_customersService->getAll();
     }
 }
