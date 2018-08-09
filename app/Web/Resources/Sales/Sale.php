@@ -15,4 +15,12 @@ class Sale extends Model {
     public function store() {
         return $this->belongsTo('LaravelStores\Web\Resources\Stores\Store');
     }
+    public function products() {
+        return $this->belongsToMany(
+            'LaravelStores\Web\Resources\Products\Product',
+            'details',
+            'sale_id',
+            'product_id')
+            ->withPivot('units');
+    }
 }

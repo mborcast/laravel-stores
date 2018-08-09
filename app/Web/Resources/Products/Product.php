@@ -17,7 +17,7 @@ class Product extends Model {
             'LaravelStores\Web\Resources\Sales\Sale',
             'details',
             'product_id',
-            'sales_id'
+            'sale_id'
         )->withPivot('units');
     }
 }

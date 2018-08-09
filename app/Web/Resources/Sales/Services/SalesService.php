@@ -19,15 +19,15 @@ class SalesService implements SalesServiceInterface {
         );
     }
     public function get($id) {
-        $lStore = $this->_sales->get($id);
-        if ($lStore == null) {
+        $lSale = $this->_sales->get($id);
+        if ($lSale == null) {
             return response()->json(
                 ['message' => 'Not found'], 
                 404
             );
         }
         return response()->json(
-            $lStore,
+            $lSale,
             200
         );
     }
@@ -38,21 +38,21 @@ class SalesService implements SalesServiceInterface {
         );
     }
     public function update($data, $id) {
-        $lStore = $this->_sales->update($data, $id);
-        if ($lStore == null) {
+        $lSale = $this->_sales->update($data, $id);
+        if ($lSale == null) {
             return response()->json(
                 ['message' => 'Not found'], 
                 404
             );
         }
         return response()->json(
-            $lStore,
+            $lSale,
             200
         );
     }
     public function delete($id) {
-        $lStore = $this->_sales->get($id);
-        if ($lStore == null) {
+        $lSale = $this->_sales->get($id);
+        if ($lSale == null) {
             return response()->json(
                 ['message' => 'Not found'], 
                 404

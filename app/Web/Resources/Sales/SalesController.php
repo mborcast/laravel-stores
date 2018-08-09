@@ -13,6 +13,9 @@ class SalesController extends Controller {
         $this->_salesService = $salesService;
     }
     public function index() {
-        return view('sales.index');
+        return $this->_salesService->getAll();
+    }
+    public function find($id) {
+        return $this->_salesService->get($id);
     }
 }

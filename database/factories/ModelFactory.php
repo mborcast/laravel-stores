@@ -52,7 +52,7 @@ $factory->define(
         'product_id' => function () {
             return factory(LaravelStores\Web\Resources\Products\Product::class)->create()->id;
         },
-        'sales_id' => function () {
+        'sale_id' => function () {
             return factory(LaravelStores\Web\Resources\Sales\Sale::class)->create()->id;
         },
         'units' => $faker->numberBetween(1, 50)

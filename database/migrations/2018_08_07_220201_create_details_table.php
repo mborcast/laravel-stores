@@ -14,13 +14,13 @@ class CreateDetailsTable extends Migration {
         Schema::create('details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
-            $table->integer('sales_id')->unsigned();
+            $table->integer('sale_id')->unsigned();
             $table->integer('units');	
             $table->timestamps();
         });
         Schema::table('details', function($table) {
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('sales_id')->references('id')->on('sales')->onDelete('cascade');
+            $table->foreign('sale_id')->references('id')->on('sales')->onDelete('cascade');
         });
     }
 
