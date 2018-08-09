@@ -12,4 +12,7 @@ class Sale extends Model {
         'created_at',
         'updated_at'
     ];
+    public function store() {
+        return $this->belongsTo('LaravelStores\Web\Resources\Stores\Store');
+    }
 }
