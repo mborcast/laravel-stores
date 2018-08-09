@@ -142,19 +142,39 @@ body {
   padding: 0.5rem 1rem;
 }
 
-.list-grid {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  grid-template: 1fr/repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 1rem;
+.index-grid {
+  display: grid;
+  grid-template: 1fr/ 1fr;
+  margin-bottom: 1rem;
 }
 
-.list-grid:nth-child(even) {
-  background-color: red;
+.index-grid .index-item {
+  border-bottom: 1px solid #dedee3;
+  margin: 0;
+  padding: 1rem;
+  text-decoration: none;
 }
 
-.list-grid:nth-child(odd) {
-  background-color: green;
+.index-grid .index-item .index-icon {
+  color: #838383;
+  margin-right: 5px;
+}
+
+.index-grid .index-item p {
+  color: #333333;
+  margin: 0;
+}
+
+.index-grid .index-item aside .overview {
+  color: #838383;
+  font-size: 0.8rem;
+}
+
+.index-grid .index-item:hover {
+  background: #eaecf8;
+}
+
+.index-grid .index-item:last-of-type {
+  border: none;
 }
 

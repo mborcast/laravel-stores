@@ -43,18 +43,27 @@ body {
         text-decoration: none;
     }
 }
+
+$body-color: #dedee3;
+$body-hover-color: #eaecf8;
+
+$primary-text: #333333;
+$secondary-text: #838383;
+$light-text: #a7a7a7;
+$light-hover-text: darken($light-text, 25%);
+
 .details-grid {
     display: grid;
     grid-template: 1fr / 1fr;
     .top {
         grid-column: 1 / -1;
         background-color: #ffffff;
-        border-bottom: 1px solid #dedee3;
+        border-bottom: 1px solid $body-color;
         .details-name {
             margin: 2rem 0;
             p {
                 margin: 0;
-                color: #a7a7a7;
+                color: $light-text;
             }
             h2 {
                 margin: 0
@@ -69,7 +78,7 @@ body {
             list-style: none;
             .tab-item {
                 text-transform: uppercase;
-                color: #a7a7a7;
+                color: $light-text;
                 cursor: pointer;
     
                 text-decoration: none;
@@ -86,10 +95,10 @@ body {
                     }
                 }
                 &:hover {
-                    color: darken(#a7a7a7, 25%);
+                    color: $light-hover-text;
                 }
                 &.tab-item-selected {
-                    color: darken(#a7a7a7, 40%);
+                    color: darken($light-text, 40%);
                     border-bottom: 2px solid #6ccfff;
                 }
             }
@@ -111,15 +120,36 @@ body {
     }
 }
 
-.list-grid {
-    display: flex;
-    grid-template: 1fr / repeat(auto-fit, minmax(100px, 1fr));
-    grid-gap: 1rem;
+.index-grid {
+    display: grid;
+    grid-template: 1fr/ 1fr;
+    margin-bottom: 1rem;
+    .index-item {
+        border-bottom: 1px solid $body-color;
+        margin: 0;
+        padding: 1rem;
+        text-decoration: none;
 
-    &:nth-child(even) {
-        background-color: red;
-    }
-    &:nth-child(odd) {
-        background-color: green;
+        .index-icon {
+            color: $secondary-text;
+            margin-right: 5px;
+        }
+        p {
+            color: $primary-text;
+            margin: 0;
+        }
+        aside {
+            .overview {
+                color: $secondary-text;
+                font-size: 0.8rem;
+
+            }
+        }
+        &:hover {
+            background: $body-hover-color;
+        }
+        &:last-of-type {
+            border: none;
+        }
     }
 }

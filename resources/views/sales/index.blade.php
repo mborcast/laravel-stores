@@ -10,25 +10,15 @@
       </div>
     </section>
     <div class="container">
+      <div class="index-grid">
         @if(empty($sales))
           <p>No sales available.</p>
         @else    
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
           @foreach ($sales as $sale)
-          <tr>
-            <td>{{ $sale->id }}</td>
-            <td>
-              <a href="{{ route('sales-details', $sale->id) }}">
-                {{ $sale->name }}
-              </a>
-            </td>
-          </tr>
+          <a class="index-item" href="{{ route('sales-details', $sale->id) }}">
+            <p>{{ $sale->date }}</p>
+          </a>
           @endforeach
-        </table>
         @endif
       </div>
     </div>

@@ -10,25 +10,18 @@
       </div>
     </section>
     <div class="container">
+      <div class="index-grid">
         @if(empty($stores))
           <p>No stores available.</p>
         @else    
-        <table>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
           @foreach ($stores as $store)
-          <tr>
-            <td>{{ $store->id }}</td>
-            <td>
-              <a href="{{ route('stores-details', $store->id) }}">
-                {{ $store->name }}
-              </a>
-            </td>
-          </tr>
+          <a class="index-item" href="{{ route('stores-details', $store->id) }}">
+            <p>{{ $store->name }}</p>
+            <aside>
+              <p class="overview">{{ count($store->customers) }} customers</p>
+            </aside>
+          </a>
           @endforeach
-        </table>
         @endif
       </div>
     </div>
