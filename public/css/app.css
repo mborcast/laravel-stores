@@ -66,16 +66,16 @@ body {
   border-bottom: 1px solid #dedee3;
 }
 
-.details-grid .top .store-name {
+.details-grid .top .details-name {
   margin: 2rem 0 1rem 0;
 }
 
-.details-grid .top .store-name p {
+.details-grid .top .details-name p {
   margin: 0;
   color: #a7a7a7;
 }
 
-.details-grid .top .store-name h2 {
+.details-grid .top .details-name h2 {
   margin: 0;
 }
 
