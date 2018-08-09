@@ -11,6 +11,9 @@ class CustomersRepository implements CustomersRepositoryInterface {
     public function get($id) {
         return Customer::find($id);
     }
+    public function getWithStoreSales($id) {
+        return Customer::with('sales.store')->find($id);
+    }
     public function getAll() {
         return Customer::all();
     }
