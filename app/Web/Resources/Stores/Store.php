@@ -17,7 +17,9 @@ class Store extends Model {
             'LaravelStores\Web\Resources\Customers\Customer',
             'sales',
             'store_id',
-            'customer_id'
-        )->withPivot('date');
+            'customer_id');
+    }
+    public function sales() {
+        return $this->hasMany('LaravelStores\Web\Resources\Sales\Sale', 'store_id', 'id');
     }
 }
