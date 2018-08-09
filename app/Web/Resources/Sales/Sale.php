@@ -8,6 +8,9 @@ class Sale extends Model {
     protected $guarded = [
         'id'
     ];
+    protected $dates = [
+        'date'
+    ];
     protected $hidden = [
         'created_at',
         'updated_at'

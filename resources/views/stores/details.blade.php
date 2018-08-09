@@ -38,22 +38,22 @@
           </tr>
           @endforeach
         </table>
-        <table class="sales">
-          <tr>
-            <th>ID</th>
-            <th>Date</th>
-          </tr>
-          @foreach ($store->sales as $sale)
-          <tr>
-            <td>{{ $sale->id }}</td>
-            <td>
-              <a href="{{ route('customers-details', $sale->id) }}">
-                {{ $sale->date }}
-              </a>
-            </td>
-          </tr>
-          @endforeach
-        </table>
+        <div class="sales">
+          <div class="sales-grid">
+            @foreach ($store->sales as $sale)
+            <a class="sales-item" href="{{ route('sales-details', $sale->id) }}">
+              <header>
+                <p class="units">{{ $sale->products[0]->pivot->units }} units</p>
+                <p class="product">{{ $sale->products[0]->name }}</p>
+              </header>
+              <div>
+                <p class="date">{{ $sale->date->format('d-M-Y') }}</p>
+                <p class="price">{{ $sale->products[0]->price }}</p>
+              </div>
+            </a>
+            @endforeach
+          </div>
+        </div>
       </div>
     </div>
 </div>

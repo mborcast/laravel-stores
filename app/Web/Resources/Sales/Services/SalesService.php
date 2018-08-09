@@ -21,21 +21,16 @@ class SalesService implements SalesServiceInterface {
     public function get($id) {
         $lSale = $this->_sales->get($id);
         if ($lSale == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
+            return view('404');
         }
-        return response()->json(
-            $lSale,
-            200
-        );
+        return view('sales.details', [
+            'sale' => $lSale
+        ]);
     }
     public function getAll() {
-        return response()->json(
-            $this->_sales->getAll(), 
-            200
-        );
+        return view('sales.index', [
+            'sales' => $this->_sales->getAll()
+        ]);
     }
     public function update($data, $id) {
         $lSale = $this->_sales->update($data, $id);

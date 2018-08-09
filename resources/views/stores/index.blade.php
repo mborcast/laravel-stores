@@ -16,8 +16,11 @@
         @else    
           @foreach ($stores as $store)
           <a class="index-item" href="{{ route('stores-details', $store->id) }}">
-            <p>{{ $store->name }}</p>
             <aside>
+              <span class="index-icon">
+                <i class="fas fa-store"></i>
+              </span> 
+              <p>{{ $store->name }}</p>
               <p class="overview">{{ count($store->customers) }} customers</p>
             </aside>
           </a>

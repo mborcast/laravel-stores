@@ -13,6 +13,6 @@ function selectTabItem(element) {
   $(element).addClass('tab-item-selected');
 }
 function showOutlet(element) {
-  $('.outlet table').hide();
+  $('.outlet>*').hide();
   $('.' + $(element).attr('data-outlet')).show();
 }

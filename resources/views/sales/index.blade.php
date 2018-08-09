@@ -16,7 +16,11 @@
         @else    
           @foreach ($sales as $sale)
           <a class="index-item" href="{{ route('sales-details', $sale->id) }}">
-            <p>{{ $sale->date }}</p>
+            <p>{{ $sale->date->format('d-M-Y') }}</p>
+            <p>{{ $sale->date->format('H:m:s') }}</p>
+            <p>{{ $sale->products[0]->name }}</p>
+            <p>${{ $sale->products[0]->price }}</p>
+            <p>{{ $sale->products[0]->pivot->units }}</p>
           </a>
           @endforeach
         @endif

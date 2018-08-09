@@ -5,6 +5,16 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -27,16 +37,6 @@ body {
   .container {
     max-width: 1140px;
   }
-}
-
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 30px;
-  padding-right: 30px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .navbar {
@@ -125,10 +125,9 @@ body {
 
 .details-grid .outlet {
   grid-column: 1 / -1;
-  padding: 1rem 0;
 }
 
-.details-grid .outlet table {
+.details-grid .outlet > * {
   display: none;
 }
 
@@ -155,14 +154,19 @@ body {
   text-decoration: none;
 }
 
-.index-grid .index-item .index-icon {
-  color: #838383;
-  margin-right: 5px;
+.index-grid .index-item aside {
+  position: relative;
 }
 
-.index-grid .index-item p {
+.index-grid .index-item aside .index-icon {
+  position: absolute;
+  color: #838383;
+  margin-right: 10px;
+}
+
+.index-grid .index-item aside p {
   color: #333333;
-  margin: 0;
+  margin: 0 0 0 30px;
 }
 
 .index-grid .index-item aside .overview {
@@ -175,6 +179,65 @@ body {
 }
 
 .index-grid .index-item:last-of-type {
+  border: none;
+}
+
+.sales-grid {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-bottom: 1rem;
+}
+
+.sales-grid .sales-item {
+  display: grid;
+  grid-template: 1fr / 1fr 150px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #dedee3;
+}
+
+.sales-grid .sales-item .units,
+.sales-grid .sales-item .date {
+  color: #333333;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sales-grid .sales-item .date {
+  margin-bottom: 0;
+}
+
+.sales-grid .sales-item .price {
+  color: #01b87a;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.sales-grid .sales-item .price:before {
+  content: '$';
+}
+
+.sales-grid .sales-item .product {
+  max-width: 60%;
+  text-transform: uppercase;
+  color: #838383;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 796px) {
+  .sales-grid .sales-item .product {
+    max-width: 80%;
+  }
+}
+
+.sales-grid .sales-item:hover {
+  background: #eaecf8;
+}
+
+.sales-grid .sales-item:last-of-type {
   border: none;
 }
 

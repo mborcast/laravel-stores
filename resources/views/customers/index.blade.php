@@ -16,11 +16,13 @@
         @else    
           @foreach ($customers as $customer)
           <a class="index-item" href="{{ route('customers-details', $customer->id) }}">
-            <p>
+            <aside>
               <span class="index-icon">
-                <i class="index-icon fas fa-user-circle"></i>
+                <i class="fas fa-user-circle"></i>
               </span> 
-              {{ $customer->name }}</p>
+              <p>{{ $customer->name }}</p>
+              <p class="overview">{{ count($customer->sales) }} sales</p>
+            </aside>
           </a>
           @endforeach
         @endif

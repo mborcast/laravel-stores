@@ -1,29 +1,16 @@
 @import "variables";
+
+@mixin shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+        -moz-box-shadow: $shadow;
+            box-shadow: $shadow;
+}
+
 html,
 body {
     margin: 0;
     background-color: #f6f7fc;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-@media (min-width: 576px) {
-  .container {
-      max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-      max-width: 720px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1200px) {
-  .container {
-      max-width: 1140px;
-  }
 }
 .container {
   width: 100%;
@@ -32,6 +19,18 @@ body {
   padding-left: 30px;
   padding-right: 30px;
   box-sizing: border-box;
+  @media (min-width: 576px) {
+    max-width: 540px;
+  }
+  @media (min-width: 768px) {
+    max-width: 720px;
+  }
+  @media (min-width: 992px) {
+    max-width: 960px;
+  }
+  @media (min-width: 1200px) {
+    max-width: 1140px;
+  }
 }
 .navbar {
     height: 60px;
@@ -106,8 +105,7 @@ $light-hover-text: darken($light-text, 25%);
     }
     .outlet {
         grid-column: 1 / -1;
-        padding: 1rem 0;
-        table {
+        &>* {
           display: none;
         }
     }
@@ -129,20 +127,71 @@ $light-hover-text: darken($light-text, 25%);
         margin: 0;
         padding: 1rem;
         text-decoration: none;
-
-        .index-icon {
-            color: $secondary-text;
-            margin-right: 5px;
-        }
-        p {
-            color: $primary-text;
-            margin: 0;
-        }
         aside {
+            position: relative;
+            .index-icon {
+                position: absolute;
+                color: $secondary-text;
+                margin-right: 10px;
+            }
+            p {
+                color: $primary-text;
+                margin: 0 0 0 30px;
+            }
             .overview {
                 color: $secondary-text;
                 font-size: 0.8rem;
+            }
+        }
+        &:hover {
+            background: $body-hover-color;
+        }
+        &:last-of-type {
+            border: none;
+        }
+    }
+}
 
+.sales-grid {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    margin-bottom: 1rem;
+    a {
+    }
+    .sales-item {
+        display: grid;
+        grid-template: 1fr / 1fr 150px;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid $body-color;
+        .units,
+        .date {
+            color: $primary-text;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .date {
+            margin-bottom: 0;
+        }
+        .price {
+            color: #01b87a;
+            font-weight: 600;
+            font-size: 2rem;
+            margin: 0;
+            &:before {
+                content: '$';
+            }
+        }
+        .product {
+            max-width: 60%;
+            text-transform: uppercase;
+            color: $secondary-text;
+            font-weight: 600;
+            font-size: 0.8rem;
+            
+            @media (max-width: 796px) {
+                max-width: 80%;
             }
         }
         &:hover {

@@ -28,7 +28,7 @@ $factory->define(
     LaravelStores\Web\Resources\Products\Product::class, 
     function (Faker\Generator $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->sentence(12),
         'price' => $faker->randomFloat(2, 50, 1000)
     ];
 });
@@ -36,22 +36,16 @@ $factory->define(
     LaravelStores\Web\Resources\Sales\Sale::class, 
     function (Faker\Generator $faker) {
     return [
-        'store_id' => function () {
-            return factory(LaravelStores\Web\Resources\Stores\Store::class)->create()->id;
-        },
-        'customer_id' => function () {
-            return factory(LaravelStores\Web\Resources\Customers\Customer::class)->create()->id;
-        },
-        'date' => $faker->date
+        'store_id' => $faker->numberBetween(1,10),
+        'customer_id' => $faker->numberBetween(1,20),
+        'date' => $faker->dateTime
     ];
 });
 $factory->define(
     LaravelStores\Web\Resources\Details\Detail::class, 
     function (Faker\Generator $faker) {
     return [
-        'product_id' => function () {
-            return factory(LaravelStores\Web\Resources\Products\Product::class)->create()->id;
-        },
+        'product_id' => $faker->numberBetween(1, 100),
         'sale_id' => function () {
             return factory(LaravelStores\Web\Resources\Sales\Sale::class)->create()->id;
         },
