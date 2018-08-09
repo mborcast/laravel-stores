@@ -4,7 +4,7 @@
 <div class="details-grid">
     <section class="top">
       <div class="container">
-        <header class="store-name">
+        <header class="details-name">
           <p>Store</p>
           <h2>{{ $store->name }}</h2>
         </header>
