@@ -1,29 +1,43 @@
-@extends('layout', ['title' => 'customers'])
+@extends('layout', ['title' => 'Customers'])
 @section('content')
-<section class="container">
-    <header class="row">
-        <div class="col">
-            <h5>Customers list</h5>
-        </div>
-    </header>
-    <div class="row">
-        <div class="col">
-            @if(empty($customers))
-                <p>No customers.</p>
-            @else    
-                <ul>
-                    @foreach ($customers as $customer)
-                    <li>
-                        {{ $customer->id }} - 
-                        <a href="{{ route('customers-details', $customer->id) }}">
-                            {{ $customer->name }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
+
+<div class="details-grid">
+    <section class="top">
+      <div class="container">
+        <header class="details-name">
+          <h2>Customers list</h2>
+        </header>
+      </div>
+    </section>
+    <div class="container">
+        @if(empty($customers))
+          <p>No customers available.</p>
+        @else    
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+          @foreach ($customers as $customer)
+          <tr>
+            <td>{{ $customer->id }}</td>
+            <td>
+              <a href="{{ route('customers-details', $customer->id) }}">
+                {{ $customer->name }}
+              </a>
+            </td>
+          </tr>
+          @endforeach
+        </table>
+        @endif
+      </div>
     </div>
-</section>
+</div>
 
 @endsection
+
+@section('scripts')
+<script src="{{ asset('js/details.js') }}"></script>
+@endsection
+
+

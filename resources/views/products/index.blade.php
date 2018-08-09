@@ -1,30 +1,45 @@
 @extends('layout', ['title' => 'Products'])
 @section('content')
 
-<section class="container">
-    <header class="row">
-        <div class="col">
-            <h5>Products list</h5>
-        </div>
-    </header>
-    <div class="row">
-        <div class="col">
-            @if(empty($products))
-                <p>No products available.</p>
-            @else    
-                <ul>
-                    @foreach ($products as $product)
-                    <li>
-                        {{ $product->id }} - 
-                        <a href="{{ route('products-details', $product->id) }}">
-                            {{ $product->name }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
-            @endif
-        </div>
+<div class="details-grid">
+    <section class="top">
+      <div class="container">
+        <header class="details-name">
+          <h2>Products list</h2>
+        </header>
+      </div>
+    </section>
+    <div class="container">
+        @if(empty($products))
+          <p>No products available.</p>
+        @else    
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Unit price</th>
+          </tr>
+          @foreach ($products as $product)
+          <tr>
+            <td>{{ $product->id }}</td>
+            <td>
+              <a href="{{ route('products-details', $product->id) }}">
+                {{ $product->name }}
+              </a>
+            </td>
+            <td>${{ $product->price }}</td>
+          </tr>
+          @endforeach
+        </table>
+        @endif
+      </div>
     </div>
-</section>
+</div>
 
 @endsection
+
+@section('scripts')
+<script src="{{ asset('js/details.js') }}"></script>
+@endsection
+
+
