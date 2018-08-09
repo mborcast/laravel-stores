@@ -12,4 +12,7 @@ class Customer extends Model {
         'created_at',
         'updated_at'
     ];
+    public function sales() {
+        return $this->hasMany('LaravelStores\Web\Resources\Sales\Sale', 'customer_id', 'id');
+    }
 }
