@@ -67,7 +67,7 @@ body {
 }
 
 .details-grid .top .details-name {
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0;
 }
 
 .details-grid .top .details-name p {
@@ -132,8 +132,12 @@ body {
   display: none;
 }
 
-.details-grid .outlet table th,
-.details-grid .outlet table td {
+.details-grid table {
+  padding: 1rem 0;
+}
+
+.details-grid table th,
+.details-grid table td {
   text-align: left;
   padding: 0.5rem 1rem;
 }
