@@ -21,21 +21,15 @@ class ProductsService implements ProductsServiceInterface {
     public function get($id) {
         $lProduct = $this->_products->get($id);
         if ($lProduct == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
+            return view('404');
         }
-        return response()->json(
-            $lProduct,
-            200
-        );
+        return view('products.details', [
+            'product' => $lProduct
+        ]);
     }
     public function getAll() {
-        return response()->json(
-            $this->_products->getAll(), 
-            200
-        );
+        $products = $this->_products->getAll();
+        return view('products.index', compact('products'));
     }
     public function update($data, $id) {
         $lProduct = $this->_products->update($data, $id);

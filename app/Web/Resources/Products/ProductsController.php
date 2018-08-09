@@ -13,6 +13,9 @@ class ProductsController extends Controller {
         $this->_productsService = $productsService;
     }
     public function index() {
-        return view('products.index');
+      return $this->_productsService->getAll();
+    }
+    public function find($id) {
+        return $this->_productsService->get($id);
     }
 }
