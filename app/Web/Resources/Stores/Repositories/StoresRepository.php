@@ -12,7 +12,7 @@ class StoresRepository implements StoresRepositoryInterface {
         return Store::find($id);
     }
     public function getAll() {
-        return Store::all();
+        return Store::paginate(5);
     }
     public function update($id, $data) {
         $lStore = Store::find($id);

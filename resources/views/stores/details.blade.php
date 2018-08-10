@@ -22,29 +22,30 @@
     </section>
     <div class="container">
       <div class="outlet">
-        <table class="customers">
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
-          @foreach ($store->customers as $customer)
-          <tr>
-            <td>{{ $customer->id }}</td>
-            <td>
-              <a href="{{ route('customers-details', $customer->id) }}">
-                {{ $customer->name }}
-              </a>
-            </td>
-          </tr>
-          @endforeach
-        </table>
+        <div class="customers">
+          <div class="index-grid">
+            @foreach ($store->customers as $customer)
+            <a class="index-item" href="{{ route('customers-details', $customer->id) }}">
+              <aside>
+                <span class="index-icon">
+                  <i class="fas fa-user-circle"></i>
+                </span> 
+                <p>{{ $customer->name }}</p>
+                <p class="overview">{{ count($customer->sales) }} sales</p>
+              </aside>
+            </a>
+            @endforeach
+          </div>
+        </div>
         <div class="sales">
           <div class="sales-grid">
             @foreach ($store->sales as $sale)
             <a class="sales-item" href="{{ route('sales-details', $sale->id) }}">
               <header>
                 <p class="units">{{ $sale->products[0]->pivot->units }} units</p>
-                <p class="product">{{ $sale->products[0]->name }}</p>
+                <p class="product">
+                  {{ $sale->products[0]->name }}
+                </p>
               </header>
               <div>
                 <p class="date">{{ $sale->date->format('d-M-Y') }}</p>

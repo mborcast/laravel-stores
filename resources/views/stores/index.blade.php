@@ -27,6 +27,9 @@
           @endforeach
         @endif
       </div>
+      <div class="links">
+        {{ $stores->links() }}
+      </div>
     </div>
 </div>
 

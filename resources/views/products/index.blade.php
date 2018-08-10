@@ -1,4 +1,4 @@
-@extends('layout', ['title' => 'Products'])
+@extends('layout', ['title' => 'products'])
 @section('content')
 
 <div class="details-grid">
@@ -16,11 +16,12 @@
         @else    
           @foreach ($products as $product)
           <a class="index-item" href="{{ route('products-details', $product->id) }}">
-            <p>{{ $product->name }}</p>
             <aside>
-              <p class="overview">
-                ${{ $product->price }}
-              </p>
+              <span class="index-icon">
+                <i class="fas fa-gift"></i>
+              </span> 
+              <p>{{ $product->name }}</p>
+              <p class="overview">{{ count($product->sales) }} sales</p>
             </aside>
           </a>
           @endforeach

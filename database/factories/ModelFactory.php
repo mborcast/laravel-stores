@@ -28,7 +28,7 @@ $factory->define(
     LaravelStores\Web\Resources\Products\Product::class, 
     function (Faker\Generator $faker) {
     return [
-        'name' => $faker->sentence(12),
+        'name' => $faker->catchPhrase,
         'price' => $faker->randomFloat(2, 50, 1000)
     ];
 });
