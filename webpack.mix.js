@@ -12,4 +12,4 @@ let mix = require('laravel-mix');
  */
 
 mix.sass('resources/assets/sass/app.scss', 'public/css');
-mix.sass('vendor/twbs/bootstrap/scss/bootstrap.scss', 'public/css');
+mix.browserSync('127.0.0.1:8000');
