@@ -27,9 +27,9 @@
           @endforeach
         @endif
       </div>
-      <div class="links">
-        {{ $stores->links() }}
-      </div>
+      @for ($i = 1; $i <= $pages; $i++)
+        <button onclick="paginate({{$i}})">{{$i}}</button>
+      @endfor
     </div>
 </div>
 
@@ -37,6 +37,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/details.js') }}"></script>
+<script src="{{ asset('js/pagination.js') }}"></script>
 @endsection
 
 

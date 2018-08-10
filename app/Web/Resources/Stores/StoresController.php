@@ -12,8 +12,15 @@ class StoresController extends Controller {
     public function __construct(StoresServiceInterface $storesService) {
         $this->_storesService = $storesService;
     }
-    public function index() {
-        return $this->_storesService->getAll();
+    public function index(Request $request) {
+        $lStores = $this->_storesService->getPage($request->page ? $request->page : 1);
+        if ($request->ajax()) {
+            return $lStores;
+        }
+        return view('stores.index', [
+            'stores' => $lStores,
+            'pages' => $this->_storesService->getPagesCount()
+        ]);
     }
     public function find($id) {
         return $this->_storesService->get($id);

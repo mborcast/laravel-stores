@@ -2,17 +2,16 @@
 
 namespace LaravelStores\Web\Resources\Stores\Repositories;
 use LaravelStores\Web\Resources\Stores\Store;
+use LaravelStores\Web\Shared\ResourceRepository;
 
-class StoresRepository implements StoresRepositoryInterface {
+class StoresRepository extends ResourceRepository implements StoresRepositoryInterface {
+
     public function create($data) {
         return Store::create([
         ]);
     }
     public function get($id) {
         return Store::find($id);
-    }
-    public function getAll() {
-        return Store::paginate(5);
     }
     public function update($id, $data) {
         $lStore = Store::find($id);
@@ -23,5 +22,11 @@ class StoresRepository implements StoresRepositoryInterface {
     }
     public function delete($id) {
         return (Store::destroy($id) > 0);
+    }
+    public function getByPage($page) {
+        return Store::skip($this->itemsPerPage * ($page - 1))->take($this->itemsPerPage)->get();
+    }
+    public function getPagesCount() {
+        return (int)(Store::count() / $this->itemsPerPage);
     }
 }
