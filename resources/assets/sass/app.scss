@@ -232,11 +232,10 @@ $light-hover-text: darken($light-text, 25%);
     }
   }
 }
-.pagination {
+.links {
   padding: 0;
   text-align: center;
-  li {
-    list-style: none;
+  .link-item {
     display: inline-block;
     margin: 0;
     border-radius: 5px;
@@ -244,11 +243,11 @@ $light-hover-text: darken($light-text, 25%);
     background-color: #d3d3da;
     padding: 0.5rem;
     width: 20px;
+    cursor: pointer;
 
-    &.disabled {
-      background-color: #eef0f5;
+    &:hover {
+      background-color: #c8c8d1;
     }
-
     &.active {
       background-color: #0267ff;
     }

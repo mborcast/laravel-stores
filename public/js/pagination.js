@@ -1,16 +1,28 @@
 $(document).ready(function() {
-  console.log('pagination ready');
+  $('.link-item').click(function() {
+    selectLinkItem($(this));
+    paginatePageInto($(this));
+  });
 });
-
-function paginate(page) {
+function selectLinkItem(element) {
+  $('.link-item').removeClass('active');
+  element.addClass('active');
+}
+function displayDataInto(data, container) {
+  container.html('');
+  data.forEach((d) => {
+    container.append(build(d));
+  });
+}
+function paginatePageInto(linkItem) {
   $.ajax({
-    url: '?page='+page,
+    url: '?page='+linkItem.attr('data-page'),
     type: "GET"
   })
-  .done(function(data) {
-    console.log(data);
+  .done((data) => {
+    displayDataInto(data, $('.'+linkItem.attr('data-container')))
   })
-  .fail(function(jqXHR, ajaxOptions, thrownError) {
-    console.log('No response from server', thrownError);
-  });
+  .fail((jqXHR, ajaxOptions, thrownError) => {
+    console.log('No response from server', thrownError)
+  })
 }

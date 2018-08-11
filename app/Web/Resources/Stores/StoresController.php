@@ -13,12 +13,14 @@ class StoresController extends Controller {
         $this->_storesService = $storesService;
     }
     public function index(Request $request) {
-        $lStores = $this->_storesService->getPage($request->page ? $request->page : 1);
+        $lCurrentPage = ($request->page ? $request->page : 1);
+        $lStores = $this->_storesService->getPage($lCurrentPage);
         if ($request->ajax()) {
             return $lStores;
         }
         return view('stores.index', [
             'stores' => $lStores,
+            'current' => $lCurrentPage,
             'pages' => $this->_storesService->getPagesCount()
         ]);
     }

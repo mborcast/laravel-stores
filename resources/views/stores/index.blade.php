@@ -11,7 +11,7 @@
     </section>
     <div class="container">
       <div class="index-grid">
-        @if(empty($stores))
+        @if (empty($stores))
           <p>No stores available.</p>
         @else    
           @foreach ($stores as $store)
@@ -27,9 +27,11 @@
           @endforeach
         @endif
       </div>
+      <ul class="links">
       @for ($i = 1; $i <= $pages; $i++)
-        <button onclick="paginate({{$i}})">{{$i}}</button>
+        <li @if ($current != $i) class="link-item" @else class="link-item active" @endif data-container="index-grid" data-page="{{$i}}">{{$i}}</li>
       @endfor
+      </ul>
     </div>
 </div>
 
@@ -37,6 +39,7 @@
 
 @section('scripts')
 <script src="{{ asset('js/details.js') }}"></script>
+<script src="{{ asset('js/stores.js') }}"></script>
 <script src="{{ asset('js/pagination.js') }}"></script>
 @endsection
 

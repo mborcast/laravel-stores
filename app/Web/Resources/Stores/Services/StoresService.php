@@ -4,6 +4,7 @@ namespace LaravelStores\Web\Resources\Stores\Services;
 
 use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
 use LaravelStores\Web\Resources\Stores\Repositories\StoresRepositoryInterface;
+use LaravelStores\Web\Shared\ResourceRepository;
 
 class StoresService implements StoresServiceInterface {
 

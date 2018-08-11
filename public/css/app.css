@@ -279,13 +279,12 @@ body {
   border: none;
 }
 
-.pagination {
+.links {
   padding: 0;
   text-align: center;
 }
 
-.pagination li {
-  list-style: none;
+.links .link-item {
   display: inline-block;
   margin: 0;
   border-radius: 5px;
@@ -293,17 +292,18 @@ body {
   background-color: #d3d3da;
   padding: 0.5rem;
   width: 20px;
+  cursor: pointer;
 }
 
-.pagination li.disabled {
-  background-color: #eef0f5;
+.links .link-item:hover {
+  background-color: #c8c8d1;
 }
 
-.pagination li.active {
+.links .link-item.active {
   background-color: #0267ff;
 }
 
-.pagination li a {
+.links .link-item a {
   text-decoration: none;
   color: #ffffff;
 }
