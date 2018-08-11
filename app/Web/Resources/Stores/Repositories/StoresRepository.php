@@ -24,9 +24,12 @@ class StoresRepository extends ResourceRepository implements StoresRepositoryInt
         return (Store::destroy($id) > 0);
     }
     public function getByPage($page) {
-        return Store::skip($this->itemsPerPage * ($page - 1))->take($this->itemsPerPage)->get();
+        return Store::skip($this->itemsPerPage * ($page - 1))
+        ->take($this->itemsPerPage)
+        ->with('customers')
+        ->get();
     }
     public function getPagesCount() {
-        return (int)(Store::count() / $this->itemsPerPage);
+      return $this->calculateTotalPages(Store::count());
     }
 }
