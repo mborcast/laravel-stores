@@ -28,13 +28,20 @@
           @endforeach
         @endif
       </div>
+      <ul class="links">
+      @for ($i = 1; $i <= $pages; $i++)
+        <li @if ($current != $i) class="link-item" @else class="link-item active" @endif data-container="sales-grid" data-page="{{$i}}">{{$i}}</li>
+      @endfor
+      </ul>
     </div>
 </div>
 
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/sales.js') }}"></script>
 <script src="{{ asset('js/details.js') }}"></script>
+<script src="{{ asset('js/pagination.js') }}"></script>
 @endsection
 
 

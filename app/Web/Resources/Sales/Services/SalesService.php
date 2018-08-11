@@ -27,10 +27,11 @@ class SalesService implements SalesServiceInterface {
             'sale' => $lSale
         ]);
     }
-    public function getAll() {
-        return view('sales.index', [
-            'sales' => $this->_sales->getAll()
-        ]);
+    public function getPage($page) {
+        return $this->_sales->getByPage($page);
+    }
+    public function getPagesCount() {
+        return $this->_sales->getPagesCount();
     }
     public function update($data, $id) {
         $lSale = $this->_sales->update($data, $id);

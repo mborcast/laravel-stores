@@ -12,8 +12,17 @@ class SalesController extends Controller {
     public function __construct(SalesServiceInterface $salesService) {
         $this->_salesService = $salesService;
     }
-    public function index() {
-        return $this->_salesService->getAll();
+    public function index(Request $request) {
+        $lCurrentPage = ($request->page ? $request->page : 1);
+        $lSales = $this->_salesService->getPage($lCurrentPage);
+        if ($request->ajax()) {
+          return $lSales;
+        }
+        return view('sales.index', [
+            'sales' => $lSales,
+            'current' => $lCurrentPage,
+            'pages' => $this->_salesService->getPagesCount()
+        ]);
     }
     public function find($id) {
         return $this->_salesService->get($id);
