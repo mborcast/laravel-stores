@@ -15,12 +15,14 @@ function displayDataInto(data, container) {
   });
 }
 function paginatePageInto(linkItem) {
+  var lSearch = '?page='+linkItem.attr('data-page');
   $.ajax({
-    url: '?page='+linkItem.attr('data-page'),
+    url: lSearch,
     type: "GET"
   })
   .done((data) => {
     displayDataInto(data, $('.'+linkItem.attr('data-container')))
+    history.pushState(null, '', window.location.pathname+lSearch);
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     console.log('No response from server', thrownError)
