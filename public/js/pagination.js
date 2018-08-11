@@ -22,7 +22,7 @@ function paginatePageInto(linkItem) {
   })
   .done((data) => {
     displayDataInto(data, $('.'+linkItem.attr('data-container')))
-    history.pushState(null, '', window.location.pathname+lSearch);
+    history.replaceState(null, '', window.location.pathname+lSearch);
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     console.log('No response from server', thrownError)
