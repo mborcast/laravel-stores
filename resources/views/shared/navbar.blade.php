@@ -1,6 +1,6 @@
 <nav class="navbar">
   <section class="container">
-    <a class="nav-logo" href="/stores">
+    <a class="nav-logo" href="/">
       <i class="fas fa-store"></i> Laravel Stores
     </a>
     <ul class="nav-links">
