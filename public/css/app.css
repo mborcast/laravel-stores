@@ -48,11 +48,33 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: white;
 }
 
-.navbar a {
+.navbar .nav-logo {
   color: white;
   text-decoration: none;
+  line-height: 60px;
+}
+
+.navbar .nav-links {
+  float: right;
+  margin: 0;
+  padding: 0 15px 0 0;
+}
+
+.navbar .nav-links li {
+  cursor: pointer;
+  display: inline-block;
+  list-style: none;
+  padding: 0 10px;
+}
+
+.navbar .nav-links li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  line-height: 60px;
 }
 
 .details-grid {
