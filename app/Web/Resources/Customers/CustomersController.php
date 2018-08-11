@@ -12,8 +12,17 @@ class CustomersController extends Controller {
     public function __construct(CustomersServiceInterface $customersService) {
         $this->_customersService = $customersService;
     }
-    public function index() {
-        return $this->_customersService->getAll();
+    public function index(Request $request) {
+        $lCurrentPage = ($request->page ? $request->page : 1);
+        $lCustomers = $this->_customersService->getPage($lCurrentPage);
+        if ($request->ajax()) {
+            return $lCustomers;
+        }
+        return view('customers.index', [
+            'customers' => $lCustomers,
+            'current' => $lCurrentPage,
+            'pages' => $this->_customersService->getPagesCount()
+        ]);
     }
     public function find($id) {
         return $this->_customersService->get($id);

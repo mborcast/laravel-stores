@@ -31,6 +31,9 @@ class StoresService implements StoresServiceInterface {
     public function getPage($page) {
         return $this->_stores->getByPage($page);
     }
+    public function getPagesCount() {
+        return $this->_stores->getPagesCount();
+    }
     public function update($data, $id) {
         $lStore = $this->_stores->update($data, $id);
         if ($lStore == null) {
@@ -62,8 +65,5 @@ class StoresService implements StoresServiceInterface {
             ['message' => 'Deletion failed'], 
             500
         );
-    }
-    public function getPagesCount() {
-        return $this->_stores->getPagesCount();
     }
 }

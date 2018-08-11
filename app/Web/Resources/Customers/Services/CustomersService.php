@@ -27,10 +27,11 @@ class CustomersService implements CustomersServiceInterface {
             'customer' => $lCustomer
         ]);
     }
-    public function getAll() {
-        $customers = $this->_customers->getAll();
-
-        return view('customers.index', compact('customers'));
+    public function getPage($page) {
+        return $this->_customers->getByPage($page);
+    }
+    public function getPagesCount() {
+        return $this->_customers->getPagesCount();
     }
     public function update($data, $id) {
         $lCustomer = $this->_customers->update($data, $id);
