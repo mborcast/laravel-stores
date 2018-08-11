@@ -1,0 +1,29 @@
+.navbar {
+  height: 60px;
+  background-color: #0267ff;
+  display: flex;
+  align-items: center;
+  color: white;
+  .nav-logo {
+    color: white;
+    text-decoration: none;
+    line-height: 60px;
+  }
+  .nav-links {
+    float: right;
+    margin: 0;
+    padding: 0 15px 0 0;
+    li {
+      cursor: pointer;
+      display: inline-block;
+      list-style: none;
+      padding: 0 10px;
+      a {
+        font-size: 1rem;
+        text-decoration: none;
+        color: #fff;
+        line-height: 60px;
+      }
+    }
+  }
+}

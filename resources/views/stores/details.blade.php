@@ -8,7 +8,7 @@
           <p>Store</p>
           <h2>{{ $store->name }}</h2>
         </header>
-        <ul class="tabs">
+        {{-- <ul class="tabs">
           <li class="tab-item" data-outlet="customers">
             <i class="fas fa-users"></i>
             <span>Customers</span>
@@ -17,10 +17,10 @@
             <i class="fas fa-box-open"></i>
             <span>Sales</span>
           </li>
-        </ul>
+        </ul> --}}
       </div>
     </section>
-    <div class="container">
+    {{-- <div class="container">
       <div class="outlet">
         <div class="customers">
           <div class="index-grid">
@@ -56,7 +56,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
 </div>
 
 @endsection

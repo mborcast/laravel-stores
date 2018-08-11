@@ -27,9 +27,9 @@
           @endforeach
         @endif
       </div>
-      <ul class="links">
+      <ul class="paginator">
       @for ($i = 1; $i <= $pages; $i++)
-        <li @if ($current != $i) class="link-item" @else class="link-item active" @endif data-container="index-grid" data-page="{{$i}}">{{$i}}</li>
+        <li @if ($current != $i) class="paginator-item" @else class="paginator-item active" @endif data-container="index-grid" data-page="{{$i}}">{{$i}}</li>
       @endfor
       </ul>
     </div>
