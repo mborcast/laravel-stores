@@ -21,7 +21,7 @@
               <p class="product">{{ $sale->products[0]->name }}</p>
             </header>
             <div>
-              <p class="date">{{ $sale->date->format('d-M-Y') }}</p>
+              <p class="date">{{ $sale->date->format('d M Y') }}</p>
               <p class="price">{{ $sale->products[0]->price }}</p>
             </div>
           </a>

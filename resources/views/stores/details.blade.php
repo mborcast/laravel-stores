@@ -48,7 +48,7 @@
                 </p>
               </header>
               <div>
-                <p class="date">{{ $sale->date->format('d-M-Y') }}</p>
+                <p class="date">{{ $sale->date->format('d M Y') }}</p>
                 <p class="price">{{ $sale->products[0]->price }}</p>
               </div>
             </a>
@@ -62,5 +62,7 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/customers.js') }}"></script>
 <script src="{{ asset('js/details.js') }}"></script>
+<script src="{{ asset('js/pagination.js') }}"></script>
 @endsection
