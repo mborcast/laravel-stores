@@ -64,7 +64,6 @@ body {
 }
 
 .navbar .nav-links li {
-  cursor: pointer;
   display: inline-block;
   list-style: none;
   padding: 0 10px;
@@ -74,11 +73,13 @@ body {
   font-size: 1rem;
   text-decoration: none;
   color: #fff;
+  height: 60px;
   line-height: 60px;
 }
 
 .paginator {
   padding: 0;
+  margin: 2rem 0 4rem 0;
   text-align: center;
 }
 
@@ -105,6 +106,31 @@ body {
 .paginator .paginator-item a {
   text-decoration: none;
   color: #ffffff;
+}
+
+.not-found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.not-found .code {
+  font-size: 5rem;
+}
+
+.not-found p {
+  margin: 0;
 }
 
 .details-grid {

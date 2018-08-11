@@ -1,16 +1,19 @@
 $(document).ready(function() {
-  $('.link-item').click(function() {
+  console.log('index-pagination');
+  $('.paginator-item').click(function() {
     selectLinkItem($(this));
     paginatePageInto($(this));
   });
 });
 function selectLinkItem(element) {
-  $('.link-item').removeClass('active');
+  $('.paginator-item').removeClass('active');
   element.addClass('active');
 }
 function displayDataInto(data, container) {
   container.html('');
+  console.log(data);
   data.forEach((d) => {
+    console.log(d);
     container.append(build(d));
   });
 }
@@ -22,7 +25,7 @@ function paginatePageInto(linkItem) {
   })
   .done((data) => {
     displayDataInto(data, $('.'+linkItem.attr('data-container')))
-    history.replaceState(null, '', window.location.pathname+lSearch);
+    history.replaceState(null, '', window.location.pathname+lSearch)
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     console.log('No response from server', thrownError)

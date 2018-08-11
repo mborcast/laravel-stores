@@ -4,7 +4,22 @@
 @import 'layout/layout';
 @import 'navbar';
 @import 'paginator';
-
+.not-found {
+  display: flex;
+  position: absolute;
+  top: $navbar-height;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  .code {
+    font-size: 5rem;
+  }
+  p {
+    margin: 0;
+  }
+}
 .details-grid {
     display: grid;
     grid-template: 1fr / 1fr;

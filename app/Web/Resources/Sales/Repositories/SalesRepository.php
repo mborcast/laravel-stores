@@ -10,10 +10,12 @@ class SalesRepository extends ResourceRepository implements SalesRepositoryInter
         ]);
     }
     public function get($id) {
-        return Sale::find($id);
+        return Sale::with('store', 'customer', 'products')
+        ->find($id);
     }
     public function update($id, $data) {
-        $lSale = Sale::find($id);
+        $lSale = Sale::with('store', 'customer', 'products')
+        ->find($id);
         if ($lSale != null) {
             $lSale->save();
         }
@@ -25,7 +27,7 @@ class SalesRepository extends ResourceRepository implements SalesRepositoryInter
     public function getByPage($page) {
         return Sale::skip($this->itemsPerPage * ($page - 1))
         ->take($this->itemsPerPage)
-        ->with('products')
+        ->with('store', 'customer', 'products')
         ->get();
     }
     public function getPagesCount() {

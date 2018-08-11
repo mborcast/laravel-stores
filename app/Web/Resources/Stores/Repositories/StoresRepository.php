@@ -11,7 +11,8 @@ class StoresRepository extends ResourceRepository implements StoresRepositoryInt
         ]);
     }
     public function get($id) {
-        return Store::find($id);
+        return Store::with('customers.sales', 'sales.products')
+        ->find($id);
     }
     public function update($id, $data) {
         $lStore = Store::find($id);
@@ -26,7 +27,7 @@ class StoresRepository extends ResourceRepository implements StoresRepositoryInt
     public function getByPage($page) {
         return Store::skip($this->itemsPerPage * ($page - 1))
         ->take($this->itemsPerPage)
-        ->with('customers')
+        ->with('customers.sales')
         ->get();
     }
     public function getPagesCount() {

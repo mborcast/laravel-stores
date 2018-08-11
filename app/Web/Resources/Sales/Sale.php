@@ -18,6 +18,9 @@ class Sale extends Model {
     public function store() {
         return $this->belongsTo('LaravelStores\Web\Resources\Stores\Store');
     }
+    public function customer() {
+        return $this->belongsTo('LaravelStores\Web\Resources\Customers\Customer');
+    }
     public function products() {
         return $this->belongsToMany(
             'LaravelStores\Web\Resources\Products\Product',

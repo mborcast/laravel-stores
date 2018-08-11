@@ -20,13 +20,7 @@ class StoresService implements StoresServiceInterface {
         );
     }
     public function get($id) {
-        $lStore = $this->_stores->get($id);
-        if ($lStore == null) {
-            return view('404');
-        }
-        return view('stores.details', [
-            'store' => $lStore
-        ]);
+        return $this->_stores->get($id);
     }
     public function getPage($page) {
         return $this->_stores->getByPage($page);
