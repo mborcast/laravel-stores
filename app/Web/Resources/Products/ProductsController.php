@@ -12,8 +12,17 @@ class ProductsController extends Controller {
     public function __construct(ProductsServiceInterface $productsService) {
         $this->_productsService = $productsService;
     }
-    public function index() {
-      return $this->_productsService->getAll();
+    public function index(Request $request) {
+        $lCurrentPage = ($request->page ? $request->page : 1);
+        $lProducts = $this->_productsService->getPage($lCurrentPage);
+        if ($request->ajax()) {
+            return $lProducts;
+        }
+        return view('products.index', [
+            'products' => $lProducts,
+            'current' => $lCurrentPage,
+            'pages' => $this->_productsService->getPagesCount()
+        ]);
     }
     public function find($id) {
         return $this->_productsService->get($id);

@@ -27,9 +27,11 @@ class ProductsService implements ProductsServiceInterface {
             'product' => $lProduct
         ]);
     }
-    public function getAll() {
-        $products = $this->_products->getAll();
-        return view('products.index', compact('products'));
+    public function getPage($page) {
+        return $this->_products->getByPage($page);
+    }
+    public function getPagesCount() {
+        return $this->_products->getPagesCount();
     }
     public function update($data, $id) {
         $lProduct = $this->_products->update($data, $id);
