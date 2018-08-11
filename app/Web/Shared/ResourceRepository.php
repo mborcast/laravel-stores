@@ -3,7 +3,7 @@
 namespace LaravelStores\Web\Shared;
 
 abstract class ResourceRepository {
-    protected $itemsPerPage = 8;
+    protected $itemsPerPage = 10;
     protected function calculateTotalPages($totalItems) {
       if ($totalItems <= 0) {
         return 1;

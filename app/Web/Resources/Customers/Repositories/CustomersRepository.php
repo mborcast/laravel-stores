@@ -10,7 +10,7 @@ class CustomersRepository extends ResourceRepository implements CustomersReposit
         ]);
     }
     public function get($id) {
-        return Customer::find($id);
+        return Customer::with('sales.store')->find($id);
     }
     public function update($id, $data) {
         $lCustomer = Customer::find($id);

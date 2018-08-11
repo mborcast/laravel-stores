@@ -19,7 +19,7 @@ class CustomersService implements CustomersServiceInterface {
         );
     }
     public function get($id) {
-        $lCustomer = $this->_customers->getWithStoreSales($id);
+        $lCustomer = $this->_customers->get($id);
         if ($lCustomer == null) {
             return view('404');
         }

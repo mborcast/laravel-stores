@@ -301,6 +301,7 @@ body {
 
 .links .link-item.active {
   background-color: #0267ff;
+  cursor: default;
 }
 
 .links .link-item a {

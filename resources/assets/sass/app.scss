@@ -250,6 +250,7 @@ $light-hover-text: darken($light-text, 25%);
     }
     &.active {
       background-color: #0267ff;
+      cursor: default;
     }
     a {
       text-decoration: none;
