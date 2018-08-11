@@ -40,6 +40,6 @@
 @section('scripts')
 <script src="{{ asset('js/products.js') }}"></script>
 <script src="{{ asset('js/details.js') }}"></script>
-<script src="{{ asset('js/pagination.js') }}"></script>
+<script src="{{ asset('js/index-pagination.js') }}"></script>
 @endsection
 
