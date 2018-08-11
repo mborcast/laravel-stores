@@ -16,7 +16,7 @@
       background-color: #c8c8d1;
     }
     &.active {
-      background-color: #0267ff;
+      background-color: $primary-color;
       cursor: default;
     }
     a {

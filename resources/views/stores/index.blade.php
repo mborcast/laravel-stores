@@ -7,6 +7,7 @@
         <header class="details-name">
           <h2>Stores list</h2>
         </header>
+        <button><span><i class="fas fa-plus"></i></span>Create</button>
       </div>
     </section>
     <div class="container">
