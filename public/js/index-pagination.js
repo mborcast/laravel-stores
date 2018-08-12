@@ -11,7 +11,6 @@ function selectLinkItem(element) {
 function displayDataInto(data, container) {
   container.html('');
   data.forEach((d) => {
-    console.log(d);
     container.append(build(d));
   });
 }
