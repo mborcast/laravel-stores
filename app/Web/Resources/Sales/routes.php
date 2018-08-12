@@ -11,4 +11,5 @@ Route::group(['namespace' => 'Resources\Sales'], function(){    // CREATE
   Route::put('/sales/{id}', 'SalesController@update')->name('sales-update');
   // DELETE
   Route::delete('/sales/{id}', 'SalesController@destroy')->name('sales-destroy');
+  Route::delete('/sales', 'SalesController@batchDestroy')->name('sales-batch-destroy');
 });

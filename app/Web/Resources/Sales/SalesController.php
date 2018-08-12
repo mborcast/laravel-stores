@@ -65,4 +65,7 @@ class SalesController extends Controller {
     public function destroy($id) {
       return $this->salesService->delete($id);
     }
+    public function batchDestroy(Request $request) {
+      return $this->salesService->batchDelete($request->all());
+    }
 }

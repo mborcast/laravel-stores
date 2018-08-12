@@ -367,11 +367,16 @@ form fieldset button {
   display: grid;
   grid-template: 1fr / 1fr;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .sales-grid .sales-item {
   display: grid;
-  grid-template: 1fr / 1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-template: 1fr/ 1fr auto auto auto;
+  grid-gap: 10px;
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: inherit;
@@ -380,11 +385,13 @@ form fieldset button {
 
 .sales-grid .sales-item .units,
 .sales-grid .sales-item .date {
+  text-transform: uppercase;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
 }
 
 .sales-grid .sales-item .units {
+  font-size: 1.25rem;
   margin: 1rem 0 0 0;
   color: #333333;
 }
@@ -401,10 +408,10 @@ form fieldset button {
 
 .sales-grid .sales-item .product {
   color: #838383;
-  max-width: 60%;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
+  max-width: 60%;
 }
 
 @media (max-width: 796px) {

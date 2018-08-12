@@ -135,19 +135,24 @@
   display: grid;
   grid-template: 1fr / 1fr;
   margin-bottom: 1rem;
+  margin-top: 0;
   .sales-item {
     display: grid;
-    grid-template: 1fr / 1fr auto;
+    align-items: center;
+    grid-template: 1fr/ 1fr auto auto auto;
+    grid-gap: 10px;
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: inherit;
     border-bottom: 1px solid $body-color;
     .units,
     .date {
+      text-transform: uppercase;
       font-weight: 600;
-      font-size: 1.25rem;
+      font-size: 0.8rem;
     }
     .units {
+      font-size: 1.25rem;
       margin: 1rem 0 0 0;
       color: $primary-text;
       .times {
@@ -161,10 +166,10 @@
     }
     .product {
       color: $secondary-text;
-      max-width: 60%;
       text-transform: uppercase;
       font-weight: 600;
       font-size: 0.8rem;
+      max-width: 60%;
       @media (max-width:796px) {
         max-width: 80%;
       }

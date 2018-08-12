@@ -8,7 +8,7 @@ $(document).ready(function() {
   $(batchDeleteButton).click(function() {
     batchDelete($(this));
   });
-  $('.index-grid').change(function() {
+  $('form').change(function() {
     if ($('[type=checkbox]:checked').length > 0) {
       batchDeleteButton.removeAttr('disabled');
     }
@@ -64,14 +64,13 @@ function batchDelete() {
     }
     $.ajax({
       url: batchDeleteButton.data('endpoint'),
-      data: $('.index-grid').serialize(),
+      data: $('form').serialize(),
       type: "DELETE",
       beforeSend: () => {
         batchDeleteButton.attr('disabled', 'disabled');
       }
     })
     .done((data) => {
-      console.log(data);
       selectLinkItem($('.paginator-item.active'));
       paginatePageInto($('.paginator-item.active'));
       swal({
