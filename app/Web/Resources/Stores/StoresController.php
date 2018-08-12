@@ -20,21 +20,12 @@ class StoresController extends Controller {
   }
   public function index(Request $request) {
     $lCurrentPage = ($request->page ? $request->page : 1);
-    $lPagesCount = $this->storesService->getPagesCount();
-
-    if ($lCurrentPage > $lPagesCount) {
-      return view('404');
-    }
-    $lStores = $this->storesService->getPage($lCurrentPage);
     if ($request->ajax()) {
-        return $lStores;
+      return $this->storesService->getItemsInPage($lCurrentPage);
     }
-    return view('stores.index', [
-        'stores' => $lStores,
-        'current' => $lCurrentPage,
-        'pages' => $lPagesCount
-    ]);
+    return $this->storesService->getPage($lCurrentPage);
   }
+
   public function find($id) {
     $lStore = $this->storesService->get($id);
     if (!$lStore) {

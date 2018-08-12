@@ -8,28 +8,36 @@ use LaravelStores\Web\Shared\ResourceRepository;
 
 class StoresService implements StoresServiceInterface {
 
-    private $_stores;
+    private $stores;
 
     public function __construct(StoresRepositoryInterface $storesRepository) {
-        $this->_stores = $storesRepository;
+        $this->stores = $storesRepository;
     }    
     public function create($data) {
-      return $this->_stores->create($data);
+      return $this->stores->create($data);
     }
     public function get($id) {
-        return $this->_stores->get($id);
+        return $this->stores->get($id);
+    }
+    public function getItemsInPage($page) {
+      return $this->stores->getByPage($page);
     }
     public function getPage($page) {
-        return $this->_stores->getByPage($page);
-    }
-    public function getPagesCount() {
-        return $this->_stores->getPagesCount();
+      $lPagesCount = $this->stores->getPagesCount();
+      if ($page > $lPagesCount) {
+        return view('404');
+      }
+      return view('stores.index', [
+          'stores' => $this->getItemsInPage($page),
+          'current' => $page,
+          'pages' => $lPagesCount
+      ]);
     }
     public function update($id, $data) {
-        return $this->_stores->update($id, $data);
+        return $this->stores->update($id, $data);
     }
     public function delete($id) {
-      if ($this->_stores->delete($id)) {
+      if ($this->stores->delete($id)) {
         return response()->json(null, 204);
       }
       return response()->json(

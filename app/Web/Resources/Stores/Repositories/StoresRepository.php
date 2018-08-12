@@ -6,10 +6,10 @@ use LaravelStores\Web\Shared\ResourceRepository;
 use LaravelStores\Web\Shared\ResourcePaginator;
 
 class StoresRepository implements StoresRepositoryInterface {
-  private $_paginator;
+  private $paginator;
 
   public function __construct(ResourcePaginator $paginator) {
-    $this->_paginator = $paginator;
+    $this->paginator = $paginator;
   }
   public function create($data) {
     return Store::create([
@@ -31,12 +31,12 @@ class StoresRepository implements StoresRepositoryInterface {
     return (Store::destroy($id) > 0);
   }
   public function getByPage($page) {
-    return Store::skip($this->_paginator->getSkipIndex($page))
-    ->take($this->_paginator->getMaxItemsPerPage())
+    return Store::skip($this->paginator->getSkipIndex($page))
+    ->take($this->paginator->getMaxItemsPerPage())
     ->with('customers.sales')
     ->get();
   }
   public function getPagesCount() {
-    return $this->_paginator->calculateTotalPages(Store::count());
+    return $this->paginator->calculateTotalPages(Store::count());
   }
 }

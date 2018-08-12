@@ -6,7 +6,7 @@ interface StoresServiceInterface {
     function create($data);
     function get($id);
     function getPage($page);
-    function getPagesCount();
+    function getItemsInPage($page);
     function update($id, $data);
     function delete($id);
 }
