@@ -15,6 +15,10 @@ form {
         margin-right: 10px;
       }
     }
+    label {
+      font-size: 0.8rem;
+      color: $secondary-text;
+    }
     input {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       width: 100%;

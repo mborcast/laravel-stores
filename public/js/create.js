@@ -20,7 +20,7 @@ function create(endpoint) {
       icon: 'success',
       text: 'Item created successfully.'
     });
-    form.find("input[type=text], textarea").val("");
+    form.find("input[type=text], input[type=number], input[type=date], textarea").val("");
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     console.log(jqXHR.responseText);

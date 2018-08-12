@@ -22,6 +22,11 @@ form fieldset legend span {
   margin-right: 10px;
 }
 
+form fieldset label {
+  font-size: 0.8rem;
+  color: #838383;
+}
+
 form fieldset input {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
@@ -212,6 +217,7 @@ form fieldset button {
 }
 
 .selectable {
+  position: relative;
   margin-bottom: 1rem;
 }
 
@@ -220,6 +226,10 @@ form fieldset button {
 }
 
 .selectable .list {
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
   max-height: 100px;
   overflow-y: scroll;
   display: none;
@@ -227,7 +237,9 @@ form fieldset button {
   padding: 0;
   margin: 0;
   background: white;
-  border: 1px solid #dedee3;
+  border-right: 1px solid #dedee3;
+  border-bottom: 1px solid #dedee3;
+  border-left: 1px solid #dedee3;
 }
 
 .selectable .list li {
