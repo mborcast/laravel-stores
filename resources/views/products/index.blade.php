@@ -26,7 +26,7 @@
           <div class="index-item">
             <aside>
               <span class="index-icon">
-                <i class="fas fa-gift"></i>
+                <i class="fas fa-box-open"></i>
               </span> 
               <p>{{ $product->name }}</p>
               <p class="overview">{{ count($product->sales) }} sales</p>
