@@ -357,8 +357,18 @@ form fieldset button {
 
 .sales-grid .sales-item .units,
 .sales-grid .sales-item .date {
-  color: #333333;
   font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.sales-grid .sales-item .units {
+  margin: 1rem 0 0 0;
+  color: #333333;
+}
+
+.sales-grid .sales-item .units .times {
+  color: #f02037;
+  margin: 0 6px;
   font-size: 1rem;
 }
 
@@ -366,21 +376,10 @@ form fieldset button {
   margin-bottom: 0;
 }
 
-.sales-grid .sales-item .price {
-  color: #01b87a;
-  font-weight: 600;
-  font-size: 2rem;
-  margin: 0;
-}
-
-.sales-grid .sales-item .price:before {
-  content: '$';
-}
-
 .sales-grid .sales-item .product {
+  color: #838383;
   max-width: 60%;
   text-transform: uppercase;
-  color: #838383;
   font-weight: 600;
   font-size: 0.8rem;
 }
@@ -389,6 +388,17 @@ form fieldset button {
   .sales-grid .sales-item .product {
     max-width: 80%;
   }
+}
+
+.sales-grid .sales-item .store {
+  color: #838383;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.sales-grid .sales-item .store:before {
+  content: '@';
 }
 
 .sales-grid .sales-item:hover {

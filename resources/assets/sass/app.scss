@@ -132,30 +132,38 @@
     border-bottom: 1px solid $body-color;
     .units,
     .date {
-      color: $primary-text;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 1.25rem;
+    }
+    .units {
+      margin: 1rem 0 0 0;
+      color: $primary-text;
+      .times {
+        color: #f02037;
+        margin: 0 6px;
+        font-size: 1rem;
+      }
     }
     .date {
       margin-bottom: 0;
     }
-    .price {
-      color: #01b87a;
-      font-weight: 600;
-      font-size: 2rem;
-      margin: 0;
-      &:before {
-        content: '$';
-      }
-    }
     .product {
+      color: $secondary-text;
       max-width: 60%;
       text-transform: uppercase;
-      color: $secondary-text;
       font-weight: 600;
       font-size: 0.8rem;
       @media (max-width:796px) {
         max-width: 80%;
+      }
+    }
+    .store {
+      color: $secondary-text;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.8rem;
+      &:before {
+        content: '@';
       }
     }
     &:hover {
