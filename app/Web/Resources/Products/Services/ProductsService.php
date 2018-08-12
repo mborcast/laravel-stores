@@ -7,62 +7,41 @@ use LaravelStores\Web\Resources\Products\Repositories\ProductsRepositoryInterfac
 
 class ProductsService implements ProductsServiceInterface {
 
-    private $_products;
+    private $products;
 
     public function __construct(ProductsRepositoryInterface $productsRepository) {
-        $this->_products = $productsRepository;
+        $this->products = $productsRepository;
     }    
     public function create($data) {
-        return response()->json(
-            $this->_products->create($data),
-            201
-        );
+      return $this->products->create($data);
     }
     public function get($id) {
-        $lProduct = $this->_products->get($id);
-        if ($lProduct == null) {
-            return view('404');
-        }
-        return view('products.details', [
-            'product' => $lProduct
-        ]);
+      return $this->products->get($id);
+    }
+    public function getItemsInPage($page) {
+      return $this->products->getByPage($page);
     }
     public function getPage($page) {
-        return $this->_products->getByPage($page);
-    }
-    public function getPagesCount() {
-        return $this->_products->getPagesCount();
+      $lMaxPages = $this->products->getPagesCount();
+      if ($page > $lMaxPages) {
+        return null;
+      }
+      return [
+        'products' => $this->getItemsInPage($page),
+        'pages' => $lMaxPages,
+        'current' => $page
+      ];
     }
     public function update($data, $id) {
-        $lProduct = $this->_products->update($data, $id);
-        if ($lProduct == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        return response()->json(
-            $lProduct,
-            200
-        );
+      return $this->products->update($id, $data);
     }
     public function delete($id) {
-        $lProduct = $this->_products->get($id);
-        if ($lProduct == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        if ($this->_products->delete($id)) {
-            return response()->json(
-                null, 
-                204
-            );
-        }
-        return response()->json(
-            ['message' => 'Deletion failed'], 
-            500
-        );
+      if ($this->products->delete($id)) {
+        return response()->json(null, 204);
+      }
+      return response()->json(
+        ['message' => 'Item deletion failed. Try again later.'], 
+        500 
+      );
     }
 }

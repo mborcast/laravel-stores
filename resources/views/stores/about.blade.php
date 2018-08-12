@@ -15,12 +15,16 @@
         <button class="button danger" onclick="destroy(this)" data-index="{{ route('stores-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
       </div>
 
+      @if (count($store->customers) > 0)
       <a href="{{ route('stores-customers', $store->id) }}">
         <i class="fas fa-angle-right"></i> All customers
       </a>
+      @endif
+      @if (count($store->sales) > 0)
       <a href="{{ route('stores-sales', $store->id) }}">
         <i class="fas fa-angle-right"></i> All sales
       </a>
+      @endif
     </div>
   </section>
 </div>

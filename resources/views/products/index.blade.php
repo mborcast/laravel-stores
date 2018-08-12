@@ -7,6 +7,9 @@
         <header class="about-name">
           <h2>Products list</h2>
         </header>
+        <a href="{{ route('products-create') }}">
+          <button class="button primary"><span><i class="fas fa-plus"></i></span>Create</button>
+        </a>
       </div>
     </section>
     <div class="container">
@@ -15,7 +18,7 @@
           <p>No products available.</p>
         @else    
           @foreach ($products as $product)
-          <a class="index-item" href="{{ route('products-details', $product->id) }}">
+          <a class="index-item" href="{{ route('products-about', $product->id) }}">
             <aside>
               <span class="index-icon">
                 <i class="fas fa-gift"></i>

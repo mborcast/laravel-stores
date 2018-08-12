@@ -6,7 +6,7 @@
     <fieldset>
       <legend><span><i class="fas fa-user-circle"></i></span>{{$title}}</legend>
       <div>
-        <input type="text" placeholder="Store name" name="name" value="{{ isset($customer) ? $customer->name : '' }}" required>
+        <input type="text" placeholder="Customer name" name="name" value="{{ isset($customer) ? $customer->name : '' }}" required>
       </div>
       <button class="button primary submit" data-endpoint="{{ isset($customer) ? route('customers-update', $customer->id) : route('customers-store') }}">Submit</button>
     </fieldset>

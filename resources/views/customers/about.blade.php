@@ -14,9 +14,11 @@
           </a>
           <button class="button danger" onclick="destroy(this)" data-index="{{ route('customers-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
         </div>
+        @if (count($customer->sales) > 0)
         <a href="{{ route('customers-sales', $customer->id) }}">
           <i class="fas fa-angle-right"></i> All sales
         </a>
+        @endif
       </div>
     </section>
 </div>

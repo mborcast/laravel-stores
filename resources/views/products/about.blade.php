@@ -9,12 +9,17 @@
           <h2>{{ $product->name }}</h2>
           <h3>Unit price: ${{ $product->price }}</h3>
         </header>
-        <ul class="tabs">
-          <li class="tab-item" data-outlet="sales">
-            <i class="fas fa-box-open"></i>
-            <span>Sales</span>
-          </li>
-        </ul>
+        <div class="crud">
+          <a href="{{ route('products-edit', $product->id) }}">
+            <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
+          </a>
+          <button class="button danger" onclick="destroy(this)" data-index="{{ route('products-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+        </div>
+        @if (count($product->sales) > 0)
+        <a href="{{ route('products-sales', $product->id) }}">
+          <i class="fas fa-angle-right"></i> All sales
+        </a>
+        @endif
       </div>
     </section>
     <div class="container">
@@ -42,5 +47,5 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/details.js') }}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
 @endsection

@@ -23,6 +23,7 @@ function create(endpoint) {
     form.find("input[type=text], textarea").val("");
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
+    console.log(jqXHR.responseText);
     var lResponse = jqXHR.responseJSON;
     var lErrors = document.createElement('div');
 
