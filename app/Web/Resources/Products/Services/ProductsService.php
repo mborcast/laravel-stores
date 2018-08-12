@@ -47,4 +47,10 @@ class ProductsService implements ProductsServiceInterface {
         500 
       );
     }
+    public function batchDelete($data) {
+      foreach ($data as $id) {
+        $this->products->delete($id);
+      }
+      return response()->json(null, 204);
+    }
 }

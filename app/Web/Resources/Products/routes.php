@@ -13,4 +13,5 @@ Route::group(['namespace' => 'Resources\Products'], function(){
     Route::put('/products/{id}', 'ProductsController@update')->name('products-update');
     // DELETE
     Route::delete('/products/{id}', 'ProductsController@destroy')->name('products-destroy');
+    Route::delete('/products', 'ProductsController@batchDestroy')->name('products-batch-destroy');
 });

@@ -37,7 +37,6 @@
             <a href="{{ route('stores-edit', $store->id) }}">
               <button type="button" class="mini button edit"><i class="fas fa-pencil-alt"></i></button>
             </a>
-
             <label class="control">
               <input type="checkbox" name="deleted[]" value="{{$store->id}}">
               <div class="control-indicator"></div>

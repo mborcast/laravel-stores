@@ -83,4 +83,7 @@ class ProductsController extends Controller {
   public function destroy($id) {
     return $this->productsService->delete($id);
   }
+  public function batchDestroy(Request $request) {
+    return $this->productsService->batchDelete($request->all());
+  }
 }
