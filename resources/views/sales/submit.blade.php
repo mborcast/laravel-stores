@@ -75,19 +75,16 @@ function setStore(id, name) {
   $('#store-id-input').val(id);
   storesSearch.val(name)
   storesList.hide();
-  console.log($('.submit-form').serialize());
 }
 function setProduct(id, name) {
   $('#product-id-input').val(id);
   productsSearch.val(name)
   productsList.hide();
-  console.log($('.submit-form').serialize());
 }
 function setCustomer(id, name) {
   $('#customer-id-input').val(id);
   customersSearch.val(name)
   customersList.hide();
-  console.log($('.submit-form').serialize());
 }
 function searchStores(endpoint, name) {
   $.ajax({
