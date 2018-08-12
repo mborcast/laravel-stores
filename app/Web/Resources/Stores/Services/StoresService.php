@@ -17,21 +17,21 @@ class StoresService implements StoresServiceInterface {
       return $this->stores->create($data);
     }
     public function get($id) {
-        return $this->stores->get($id);
+      return $this->stores->get($id);
     }
     public function getItemsInPage($page) {
       return $this->stores->getByPage($page);
     }
     public function getPage($page) {
-      $lPagesCount = $this->stores->getPagesCount();
-      if ($page > $lPagesCount) {
-        return view('404');
+      $lMaxPages = $this->stores->getPagesCount();
+      if ($page > $lMaxPages) {
+        return null;
       }
-      return view('stores.index', [
-          'stores' => $this->getItemsInPage($page),
-          'current' => $page,
-          'pages' => $lPagesCount
-      ]);
+      return [
+        'stores' => $this->getItemsInPage($page),
+        'pages' => $lMaxPages,
+        'current' => $page
+      ];
     }
     public function update($id, $data) {
         return $this->stores->update($id, $data);

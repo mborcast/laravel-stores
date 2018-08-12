@@ -19,21 +19,23 @@ class StoresController extends Controller {
     $this->paginator = $paginator;
   }
   public function index(Request $request) {
-    $lCurrentPage = ($request->page ? $request->page : 1);
+    $lStoresPage = $this->storesService->getPage(($request->page ? $request->page : 1));
     if ($request->ajax()) {
-      return $this->storesService->getItemsInPage($lCurrentPage);
+      return $lStoresPage['stores'];
     }
-    return $this->storesService->getPage($lCurrentPage);
+    if ($lStoresPage) {
+      return view('stores.index', $lStoresPage);
+    }
+    return view('404');
   }
-
   public function find($id) {
     $lStore = $this->storesService->get($id);
-    if (!$lStore) {
-      return view('404');
+    if ($lStore) {
+      return view('stores.about', [
+          'store' => $lStore
+      ]);
     }
-    return view('stores.about', [
-        'store' => $lStore
-    ]);
+    return view('404');
   }
   public function getCustomersIndex(Request $request, $id) {
     $lCurrentPage = ($request->page ? $request->page : 1);
@@ -49,12 +51,12 @@ class StoresController extends Controller {
     if ($lPivotIdx >= $lItemsCount) {
       return view('404');
     }
-    $lCustomers = $lStore->customers->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
+    $lItems = $lStore->customers->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
     if ($request->ajax()) {
-      return $lCustomers;
+      return $lItems;
     }
     return view('customers.index', [
-      'customers' => $lCustomers,
+      'customers' => $lItems,
       'current' => $lCurrentPage,
       'pages' => $this->paginator->calculateTotalPages($lItemsCount)
     ]);
@@ -73,12 +75,12 @@ class StoresController extends Controller {
     if ($lPivotIdx >= $lItemsCount) {
       return view('404');
     }
-    $lSales = $lStore->sales->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
+    $lItems = $lStore->sales->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
     if ($request->ajax()) {
-      return $lSales;
+      return $lItems;
     }
     return view('sales.index', [
-      'sales' => $lSales,
+      'sales' => $lItems,
       'current' => $lCurrentPage,
       'pages' => $this->paginator->calculateTotalPages($lItemsCount)
     ]);
