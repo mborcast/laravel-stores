@@ -12,7 +12,7 @@
         <a href="{{ route('stores-edit', $store->id) }}">
           <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
         </a>
-        <button class="button danger" onclick="destroy(this)"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+        <button class="button danger" onclick="destroy(this)" data-index="{{ route('stores-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
       </div>
 
       <a href="{{ route('stores-customers', $store->id) }}">
