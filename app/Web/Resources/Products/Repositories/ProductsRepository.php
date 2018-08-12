@@ -16,6 +16,9 @@ class ProductsRepository implements ProductsRepositoryInterface {
       'price' => $data['price']
     ]);
   }
+  public function searchByName($name) {
+    return Product::where('name', 'like', $name.'%')->get();
+  }
   public function get($id) {
     return Product::with('sales.products')->find($id);
   }

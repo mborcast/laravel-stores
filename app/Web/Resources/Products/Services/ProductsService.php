@@ -15,6 +15,9 @@ class ProductsService implements ProductsServiceInterface {
     public function create($data) {
       return $this->products->create($data);
     }
+    public function searchByName($name) {
+      return $this->products->searchByName($name);
+    }
     public function get($id) {
       return $this->products->get($id);
     }

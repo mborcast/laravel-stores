@@ -16,6 +16,9 @@ class StoresService implements StoresServiceInterface {
     public function create($data) {
       return $this->stores->create($data);
     }
+    public function searchByName($name) {
+      return $this->stores->searchByName($name);
+    }
     public function get($id) {
       return $this->stores->get($id);
     }

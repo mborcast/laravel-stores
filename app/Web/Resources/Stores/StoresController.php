@@ -35,6 +35,11 @@ class StoresController extends Controller {
     }
     return view('404');
   }
+  public function search(Request $request) {
+    if ($request->ajax()) {
+     return $this->storesService->searchByName($request->name);
+    }
+  }
   public function getCustomersIndex(Request $request, $id) {
     $lStore = $this->storesService->get($id);
     if (!$lStore) {

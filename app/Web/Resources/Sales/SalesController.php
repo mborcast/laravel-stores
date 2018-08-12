@@ -6,12 +6,21 @@ use LaravelStores\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Shared\RelationshipsPaginator;
+use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
+use LaravelStores\Web\Resources\Products\Services\ProductsServiceInterface;
 
 class SalesController extends Controller {
     private $salesService;
+    private $storesService;
+    private $productsService;
     
-    public function __construct(SalesServiceInterface $salesService) {
+    public function __construct(
+      SalesServiceInterface $salesService,
+      StoresServiceInterface $storesService,
+      ProductsServiceInterface $productsService) {
       $this->salesService = $salesService;
+      $this->storesService = $storesService;
+      $this->productsService = $productsService;
     }
 
     public function index(Request $request) {
@@ -32,7 +41,9 @@ class SalesController extends Controller {
       return view('404');
     }
     public function create() {
-      return view('sales.submit', ['title' => 'Create sale']);
+      return view('sales.submit', [
+        'title' => 'Create sale'
+      ]);
     }
     public function store(CreateSalesRequest $request) {
       return $this->salesService->create($request->all());

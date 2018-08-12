@@ -35,6 +35,11 @@ class ProductsController extends Controller {
     }
     return view('404');
   }
+  public function search(Request $request) {
+    if ($request->ajax()) {
+     return $this->productsService->searchByName($request->name);
+    }
+  }
   public function getSalesIndex(Request $request, $id) {
     $lProduct = $this->productsService->get($id);
     if (!$lProduct) {

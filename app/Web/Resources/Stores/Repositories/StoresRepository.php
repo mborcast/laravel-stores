@@ -15,6 +15,9 @@ class StoresRepository implements StoresRepositoryInterface {
       'name' => $data['name']
     ]);
   }
+  public function searchByName($name) {
+    return Store::where('name', 'like', $name.'%')->get();
+  }
   public function get($id) {
     return Store::with('customers.sales', 'sales.products')->find($id);
   }
