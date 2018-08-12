@@ -8,7 +8,7 @@
           <h2>Stores list</h2>
         </header>
         <a href="{{ route('stores-create') }}">
-          <button class="button"><span><i class="fas fa-plus"></i></span>Create</button>
+          <button class="button primary"><span><i class="fas fa-plus"></i></span>Create</button>
         </a>
       </div>
     </section>

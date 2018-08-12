@@ -48,7 +48,6 @@ form fieldset button {
   color: #ffffff;
   height: 36px;
   padding: 0 16px;
-  background: #1abc9c;
   border: none;
   min-width: 120px;
 }
@@ -61,17 +60,41 @@ form fieldset button {
   width: 100%;
 }
 
-.button:hover {
-  -webkit-transition: all 200ms ease-in;
-  transition: all 200ms ease-in;
-  background: #16a186;
-}
-
 .button:disabled {
   cursor: auto;
   color: #c2c2c2;
   background: #f5f5f5;
   border: 2px solid #f1f1f1;
+}
+
+.button.primary {
+  background: #1abc9c;
+}
+
+.button.primary:hover {
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  background: #16a186;
+}
+
+.button.edit {
+  background: #1a8bbc;
+}
+
+.button.edit:hover {
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  background: #1677a1;
+}
+
+.button.danger {
+  background: #bc1a3a;
+}
+
+.button.danger:hover {
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  background: #a11632;
 }
 
 .container {

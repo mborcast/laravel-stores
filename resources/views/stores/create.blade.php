@@ -8,7 +8,7 @@
       <div>
         <input id="store-name" type="text" placeholder="Store name" name="name" required>
       </div>
-      <button class="button submit" data-endpoint="{{ route('stores-store') }}">Submit</button>
+      <button class="button primary submit" data-endpoint="{{ route('stores-store') }}">Submit</button>
     </fieldset>
   </form>
 </div>

@@ -8,6 +8,10 @@
         <p>Store</p>
         <h2>{{ $store->name }}</h2>
       </header>
+      <a href="{{ route('stores-edit') }}">
+        <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
+      </a>
+
       <a href="{{ route('stores-customers', $store->id) }}">
         <i class="fas fa-angle-right"></i> All customers
       </a>
