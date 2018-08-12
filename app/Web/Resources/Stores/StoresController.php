@@ -37,7 +37,6 @@ class StoresController extends Controller {
     }
     return view('404');
   }
-
   public function getCustomersIndex(Request $request, $id) {
     $lStore = $this->storesService->get($id);
     if (!$lStore) {
@@ -59,23 +58,6 @@ class StoresController extends Controller {
     }
     return view('404');
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   public function getSalesIndex(Request $request, $id) {
     $lStore = $this->storesService->get($id);
     if (!$lStore) {
@@ -97,12 +79,8 @@ class StoresController extends Controller {
     }
     return view('404');
   }
-
-
   public function create() {
-    return view('stores.submit', [
-      'title' => 'Create store'
-    ]);
+    return view('stores.submit', ['title' => 'Create store']);
   }
   public function store(CreateStoresRequest $request) {
     return $this->storesService->create($request->all());
