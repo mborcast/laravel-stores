@@ -51,7 +51,7 @@ function paginatePageInto(linkItem) {
 }
 function batchDelete() {
   swal({
-    title: 'Delete items?',
+    title: 'Delete selected items?',
     text: 'Deleted items cannot be recovered.',
     icon: 'warning',
     buttons: {

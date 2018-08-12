@@ -14,7 +14,7 @@
         <p>{{ $sale->date->format('d M Y') }}</p>
       </div>
       <div class="crud">
-        <button class="button danger" onclick="destroy(this)" data-index="{{ route('sales-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+        <button class="button danger" onclick="destroy(this)" data-index="{{ route('sales-index') }}"><span><i class="fas fa-eraser"></i></span>Delete</button>
       </div>
     </div>
   </section>

@@ -10,9 +10,9 @@
         </header>
         <div class="crud">
           <a href="{{ route('customers-edit', $customer->id) }}">
-            <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
+            <button class="button edit"><span><i class="fas fa-edit"></i></span>Edit</button>
           </a>
-          <button class="button danger" onclick="destroy(this)" data-index="{{ route('customers-index') }}"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+          <button class="button danger" onclick="destroy(this)" data-index="{{ route('customers-index') }}"><span><i class="fas fa-eraser"></i></span>Delete</button>
         </div>
         @if (count($customer->sales) > 0)
         <a href="{{ route('customers-sales', $customer->id) }}">

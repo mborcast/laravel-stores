@@ -12,7 +12,7 @@
             <button class="button primary"><span><i class="fas fa-plus"></i></span>Create</button>
           </a>
           <button class="button danger batch-destroyer" data-endpoint="{{route('products-batch-destroy')}}" disabled>
-            <span><i class="fas fa-eraser"></i></span>Eliminar
+            <span><i class="fas fa-eraser"></i></span>Delete
           </button>
         </div>
       </div>
