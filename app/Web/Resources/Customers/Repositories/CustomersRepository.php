@@ -2,33 +2,40 @@
 
 namespace LaravelStores\Web\Resources\Customers\Repositories;
 use LaravelStores\Web\Resources\Customers\Customer;
-use LaravelStores\Web\Shared\ResourceRepository;
+use LaravelStores\Web\Shared\PageCalculator;
 
-class CustomersRepository extends ResourceRepository implements CustomersRepositoryInterface {
-    public function create($data) {
-        return Customer::create([
-        ]);
+class CustomersRepository implements CustomersRepositoryInterface {
+  private $pageCalculator;
+
+  public function __construct(PageCalculator $pageCalculator) {
+    $this->pageCalculator = $pageCalculator;
+  }
+  public function create($data) {
+    return Customer::create([
+      'name' => $data['name']
+    ]);
+  }
+  public function get($id) {
+    return Customer::with('sales.store', 'sales.products')->find($id);
+  }
+  public function update($id, $data) {
+    $lCustomer = Customer::find($id);
+    if ($lCustomer != null) {
+      $lCustomer->name = $data['name'];
+      $lCustomer->save();
     }
-    public function get($id) {
-        return Customer::with('sales.store')->find($id);
-    }
-    public function update($id, $data) {
-        $lCustomer = Customer::find($id);
-        if ($lCustomer != null) {
-            $lCustomer->save();
-        }
-        return $lCustomer;
-    }
-    public function delete($id) {
-        return (Customer::destroy($id) > 0);
-    }
-    public function getByPage($page) {
-        return Customer::skip($this->itemsPerPage * ($page - 1))
-        ->take($this->itemsPerPage)
-        ->with('sales.store')
-        ->get();
-    }
-    public function getPagesCount() {
-      return $this->calculateMaxPages(Customer::count());
-    }
+    return $lCustomer;
+  }
+  public function delete($id) {
+    return (Customer::destroy($id) > 0);
+  }
+  public function getByPage($page) {
+    return Customer::skip($this->pageCalculator->getSkipIndex($page))
+    ->take($this->pageCalculator->getMaxItemsPerPage())
+    ->with('sales.store')
+    ->get();
+  }
+  public function getPagesCount() {
+    return $this->pageCalculator->calculateMaxPages(Customer::count());
+  }
 }

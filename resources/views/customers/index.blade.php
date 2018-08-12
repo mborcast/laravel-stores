@@ -7,6 +7,9 @@
         <header class="about-name">
           <h2>Customers list</h2>
         </header>
+        <a href="{{ route('customers-create') }}">
+          <button class="button primary"><span><i class="fas fa-plus"></i></span>Create</button>
+        </a>
       </div>
     </section>
     <div class="container">
@@ -15,7 +18,7 @@
           <p>No customers available.</p>
         @else    
           @foreach ($customers as $customer)
-          <a class="index-item" href="{{ route('customers-details', $customer->id) }}">
+          <a class="index-item" href="{{ route('customers-about', $customer->id) }}">
             <aside>
               <span class="index-icon">
                 <i class="fas fa-user-circle"></i>

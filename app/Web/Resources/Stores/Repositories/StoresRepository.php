@@ -2,7 +2,6 @@
 
 namespace LaravelStores\Web\Resources\Stores\Repositories;
 use LaravelStores\Web\Resources\Stores\Store;
-use LaravelStores\Web\Shared\ResourceRepository;
 use LaravelStores\Web\Shared\PageCalculator;
 
 class StoresRepository implements StoresRepositoryInterface {

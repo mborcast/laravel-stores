@@ -7,62 +7,41 @@ use LaravelStores\Web\Resources\Customers\Repositories\CustomersRepositoryInterf
 
 class CustomersService implements CustomersServiceInterface {
 
-    private $_customers;
+    private $customers;
 
     public function __construct(CustomersRepositoryInterface $customersRepository) {
-        $this->_customers = $customersRepository;
+        $this->customers = $customersRepository;
     }    
     public function create($data) {
-        return response()->json(
-            $this->_customers->create($data),
-            201
-        );
+      return $this->customers->create($data);
     }
     public function get($id) {
-        $lCustomer = $this->_customers->get($id);
-        if ($lCustomer == null) {
-            return view('404');
-        }
-        return view('customers.details', [
-            'customer' => $lCustomer
-        ]);
+      return $this->customers->get($id);
+    }
+    public function getItemsInPage($page) {
+      return $this->customers->getByPage($page);
     }
     public function getPage($page) {
-        return $this->_customers->getByPage($page);
+      $lMaxPages = $this->customers->getPagesCount();
+      if ($page > $lMaxPages) {
+        return null;
+      }
+      return [
+        'customers' => $this->getItemsInPage($page),
+        'pages' => $lMaxPages,
+        'current' => $page
+      ];
     }
-    public function getPagesCount() {
-        return $this->_customers->getPagesCount();
-    }
-    public function update($data, $id) {
-        $lCustomer = $this->_customers->update($data, $id);
-        if ($lCustomer == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        return response()->json(
-            $lCustomer,
-            200
-        );
+    public function update($id, $data) {
+      return $this->customers->update($id, $data);
     }
     public function delete($id) {
-        $lCustomer = $this->_customers->get($id);
-        if ($lCustomer == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        if ($this->_customers->delete($id)) {
-            return response()->json(
-                null, 
-                204
-            );
-        }
-        return response()->json(
-            ['message' => 'Deletion failed'], 
-            500
-        );
+      if ($this->customers->delete($id)) {
+        return response()->json(null, 204);
+      }
+      return response()->json(
+        ['message' => 'Item deletion failed. Try again later.'], 
+        500 
+      );
     }
 }

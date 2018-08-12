@@ -3,7 +3,7 @@
 namespace LaravelStores\Web\Shared;
 
 class PageCalculator {
-  private const ITEMS_PER_PAGE = 6;
+  private const ITEMS_PER_PAGE = 2;
   public function calculateMaxPages($totalItems) {
     return ($totalItems > 0) ? (int)ceil($totalItems / self::ITEMS_PER_PAGE) : 1;
   }

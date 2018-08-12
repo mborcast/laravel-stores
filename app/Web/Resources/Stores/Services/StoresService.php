@@ -34,7 +34,7 @@ class StoresService implements StoresServiceInterface {
       ];
     }
     public function update($id, $data) {
-        return $this->stores->update($id, $data);
+      return $this->stores->update($id, $data);
     }
     public function delete($id) {
       if ($this->stores->delete($id)) {
