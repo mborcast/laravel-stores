@@ -8,6 +8,7 @@ use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Shared\RelationshipsPaginator;
 use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
 use LaravelStores\Web\Resources\Products\Services\ProductsServiceInterface;
+use LaravelStores\Web\Resources\Sales\Requests\CreateSalesRequest;
 
 class SalesController extends Controller {
     private $salesService;

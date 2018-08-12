@@ -13,6 +13,10 @@ class SalesRepository implements SalesRepositoryInterface {
   }
   public function create($data) {
     return Sale::create([
+      'date' => $data['date'],
+      'store_id' => $data['storeId'],
+      'product_id' => $data['productId'],
+      'units' => $data['units']
     ]);
   }
   public function get($id) {
@@ -22,6 +26,10 @@ class SalesRepository implements SalesRepositoryInterface {
   public function update($id, $data) {
     $lProduct = Sale::find($id);
     if ($lProduct != null) {
+      $lProduct->date = $data['date'];
+      $lProduct->store_id = $data['storeId'];
+      $lProduct->product_id = $data['productId'];
+      $lProduct->units = $data['units'];
       $lProduct->save();
     }
     return $lProduct;

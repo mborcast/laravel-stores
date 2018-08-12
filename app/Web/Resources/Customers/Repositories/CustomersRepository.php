@@ -15,6 +15,9 @@ class CustomersRepository implements CustomersRepositoryInterface {
       'name' => $data['name']
     ]);
   }
+  public function searchByName($name) {
+    return Customer::where('name', 'like', $name.'%')->get();
+  }
   public function get($id) {
     return Customer::with('sales.store', 'sales.products')->find($id);
   }

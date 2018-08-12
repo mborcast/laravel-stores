@@ -35,6 +35,11 @@ class CustomersController extends Controller {
     }
     return view('404');
   }
+  public function search(Request $request) {
+    if ($request->ajax()) {
+     return $this->customersService->searchByName($request->name);
+    }
+  }
   public function getSalesIndex(Request $request, $id) {
     $lCustomer = $this->customersService->get($id);
     if (!$lCustomer) {

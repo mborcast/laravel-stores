@@ -9,7 +9,10 @@ class CreateSalesRequest extends FormRequest {
   }
   public function rules() {
     return [
-      'name' => 'required'
+      'date' => 'required|date',
+      'units' => 'required|numeric',
+      'storeId' => 'required|numeric',
+      'productId' => 'required|numeric'
     ];
   }
 }

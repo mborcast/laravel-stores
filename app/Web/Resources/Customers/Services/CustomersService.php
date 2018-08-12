@@ -15,6 +15,9 @@ class CustomersService implements CustomersServiceInterface {
     public function create($data) {
       return $this->customers->create($data);
     }
+    public function searchByName($name) {
+      return $this->customers->searchByName($name);
+    }
     public function get($id) {
       return $this->customers->get($id);
     }

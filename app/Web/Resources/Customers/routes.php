@@ -5,6 +5,7 @@ Route::group(['namespace' => 'Resources\Customers'], function(){
   Route::post('/customers', 'CustomersController@store')->name('customers-store');
   // READ
   Route::get('/customers', 'CustomersController@index')->name('customers-index');
+  Route::get('/customers/search', 'CustomersController@search')->name('customers-search');
   Route::get('/customers/{id}', 'CustomersController@find')->name('customers-about');
   Route::get('/customers/{id}/sales', 'CustomersController@getSalesIndex')->name('customers-sales');
   // UPDATE
