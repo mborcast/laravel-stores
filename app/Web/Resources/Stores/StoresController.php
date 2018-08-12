@@ -8,33 +8,35 @@ use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
 use LaravelStores\Web\Resources\Customers\Services\CustomersServiceInterface;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Resources\Stores\Requests\CreateStoresRequest;
+use LaravelStores\Web\Shared\ResourcePaginator;
 
 class StoresController extends Controller {
-  private const RELATIONSHIP_ITEMS_PP = 4;
-  private $_storesService;
+  private $storesService;
+  private $paginator;
 
-  public function __construct(StoresServiceInterface $storesService) {
-    $this->_storesService = $storesService;
+  public function __construct(StoresServiceInterface $storesService, ResourcePaginator $paginator) {
+    $this->storesService = $storesService;
+    $this->paginator = $paginator;
   }
   public function index(Request $request) {
-      $lCurrentPage = ($request->page ? $request->page : 1);
-      $lPagesCount = $this->_storesService->getPagesCount();
+    $lCurrentPage = ($request->page ? $request->page : 1);
+    $lPagesCount = $this->storesService->getPagesCount();
 
-      if ($lCurrentPage > $lPagesCount) {
-        return view('404');
-      }
-      $lStores = $this->_storesService->getPage($lCurrentPage);
-      if ($request->ajax()) {
-          return $lStores;
-      }
-      return view('stores.index', [
-          'stores' => $lStores,
-          'current' => $lCurrentPage,
-          'pages' => $lPagesCount
-      ]);
+    if ($lCurrentPage > $lPagesCount) {
+      return view('404');
+    }
+    $lStores = $this->storesService->getPage($lCurrentPage);
+    if ($request->ajax()) {
+        return $lStores;
+    }
+    return view('stores.index', [
+        'stores' => $lStores,
+        'current' => $lCurrentPage,
+        'pages' => $lPagesCount
+    ]);
   }
   public function find($id) {
-    $lStore = $this->_storesService->get($id);
+    $lStore = $this->storesService->get($id);
     if (!$lStore) {
       return view('404');
     }
@@ -44,7 +46,7 @@ class StoresController extends Controller {
   }
   public function getCustomersIndex(Request $request, $id) {
     $lCurrentPage = ($request->page ? $request->page : 1);
-    $lStore = $this->_storesService->get($id);
+    $lStore = $this->storesService->get($id);
     if (!$lStore) {
       if ($request->ajax()) {
         return [];
@@ -52,23 +54,23 @@ class StoresController extends Controller {
       return view('404');
     }
     $lItemsCount = count($lStore->customers);
-    $lPivotIdx = ($lCurrentPage - 1) * self::RELATIONSHIP_ITEMS_PP;
+    $lPivotIdx = $this->paginator->getSkipIndex($lCurrentPage);
     if ($lPivotIdx >= $lItemsCount) {
       return view('404');
     }
-    $lCustomers = $lStore->customers->slice($lPivotIdx, self::RELATIONSHIP_ITEMS_PP)->values();
+    $lCustomers = $lStore->customers->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
     if ($request->ajax()) {
       return $lCustomers;
     }
     return view('customers.index', [
       'customers' => $lCustomers,
       'current' => $lCurrentPage,
-      'pages' => (int)ceil($lItemsCount / self::RELATIONSHIP_ITEMS_PP)
+      'pages' => $this->paginator->calculateTotalPages($lItemsCount)
     ]);
   }
   public function getSalesIndex(Request $request, $id) {
     $lCurrentPage = ($request->page ? $request->page : 1);
-    $lStore = $this->_storesService->get($id);
+    $lStore = $this->storesService->get($id);
     if (!$lStore) {
       if ($request->ajax()) {
         return [];
@@ -76,18 +78,18 @@ class StoresController extends Controller {
       return view('404');
     }
     $lItemsCount = count($lStore->sales);
-    $lPivotIdx = ($lCurrentPage - 1) * self::RELATIONSHIP_ITEMS_PP;
+    $lPivotIdx = $this->paginator->getSkipIndex($lCurrentPage);
     if ($lPivotIdx >= $lItemsCount) {
       return view('404');
     }
-    $lSales = $lStore->sales->slice($lPivotIdx, self::RELATIONSHIP_ITEMS_PP)->values();
+    $lSales = $lStore->sales->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
     if ($request->ajax()) {
       return $lSales;
     }
     return view('sales.index', [
       'sales' => $lSales,
       'current' => $lCurrentPage,
-      'pages' => (int)ceil($lItemsCount / self::RELATIONSHIP_ITEMS_PP)
+      'pages' => $this->paginator->calculateTotalPages($lItemsCount)
     ]);
   }
   public function create() {
@@ -96,10 +98,10 @@ class StoresController extends Controller {
     ]);
   }
   public function store(CreateStoresRequest $request) {
-    return $this->_storesService->create($request->all());
+    return $this->storesService->create($request->all());
   }
   public function edit($id) {
-    $lStore = $this->_storesService->get($id);
+    $lStore = $this->storesService->get($id);
     if ($lStore == null) {
       return view('404');
     }
@@ -109,9 +111,9 @@ class StoresController extends Controller {
     ]);
   }
   public function update(CreateStoresRequest $request, $id) {
-    return $this->_storesService->update($id, $request->all());
+    return $this->storesService->update($id, $request->all());
   }
   public function destroy($id) {
-    return $this->_storesService->delete($id);
+    return $this->storesService->delete($id);
   }
 }
