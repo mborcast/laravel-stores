@@ -6,6 +6,7 @@
     <fieldset>
       <legend><span><i class="fas fa-store-alt"></i></span>{{$title}}</legend>
       <div>
+        <label>Store name</label>
         <input type="text" placeholder="Store name" name="name" value="{{ isset($store) ? $store->name : '' }}" required>
       </div>
       <button class="button primary submit" data-endpoint="{{ isset($store) ? route('stores-update', $store->id) : route('stores-store') }}">Submit</button>
