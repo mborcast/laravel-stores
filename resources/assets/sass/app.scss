@@ -4,6 +4,7 @@
 @import 'layout/layout';
 @import 'navbar';
 @import 'paginator';
+
 .not-found {
   display: flex;
   position: absolute;
@@ -20,179 +21,184 @@
     margin: 0;
   }
 }
-.details-grid {
-    display: grid;
-    grid-template: 1fr / 1fr;
-    .top {
-      padding: 1rem 0 1.5rem 0;
-        grid-column: 1 / -1;
-        background-color: #ffffff;
-        border-bottom: 1px solid $body-color;
-        .details-name {
-          p {
-              margin: 0;
-              color: $light-text;
-          }
-          h2 {
-            margin: 0.5rem;
-          }
-        }
-        .tabs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
-            grid-auto-rows: 1fr;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            .tab-item {
-                text-transform: uppercase;
-                color: $light-text;
-                cursor: pointer;
-                text-decoration: none;
-                padding: 1rem;
-                font-weight: 600;
-                font-size: 0.8rem;
-                @media (max-width:576px) {
-                    text-align: center;
-                }
-                span {
-                    margin-left: 5px;
-                    @media (max-width:576px) {
-                        display: none;
-                    }
-                }
-                &:hover {
-                    color: $light-hover-text;
-                }
-                &.tab-item-selected {
-                    color: darken($light-text,40%);
-                    border-bottom: 2px solid #6ccfff;
-                }
-            }
-        }
+.about-grid {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  .top {
+    padding: 1rem 0 1.5rem 0;
+    grid-column: 1 / -1;
+    background-color: #ffffff;
+    border-bottom: 1px solid $body-color;
+    .about-name {
+      p {
+        margin: 0;
+        color: $light-text;
+      }
+      h2 {
+        margin: 0.5rem 0;
+      }
     }
-    .outlet {
-        grid-column: 1 / -1;
-        &>* {
+    .crud {
+      a {
+        text-decoration: none;
+      }
+    }
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+      grid-auto-rows: 1fr;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      .tab-item {
+        text-transform: uppercase;
+        color: $light-text;
+        cursor: pointer;
+        text-decoration: none;
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 0.8rem;
+        @media (max-width:576px) {
+          text-align: center;
+        }
+        span {
+          margin-left: 5px;
+          @media (max-width:576px) {
             display: none;
+          }
         }
+        &:hover {
+          color: $light-hover-text;
+        }
+        &.tab-item-selected {
+          color: darken($light-text,40%);
+          border-bottom: 2px solid #6ccfff;
+        }
+      }
     }
+  }
+  .outlet {
+    grid-column: 1 / -1;
+    &>* {
+      display: none;
+    }
+  }
 }
 .index-grid {
-    display: grid;
-    grid-template: 1fr/ 1fr;
-    margin-bottom: 1rem;
-    .index-item {
-        border-bottom: 1px solid $body-color;
-        margin: 0;
-        padding: 1rem;
-        text-decoration: none;
-        aside {
-            position: relative;
-            .index-icon {
-                position: absolute;
-                color: $secondary-text;
-                margin-right: 10px;
-            }
-            p {
-                color: $primary-text;
-                margin: 0 0 0 30px;
-            }
-            .overview {
-                color: $secondary-text;
-                font-size: 0.8rem;
-            }
-        }
-        &:hover {
-            background: $body-hover-color;
-        }
-        &:last-of-type {
-            border: none;
-        }
+  display: grid;
+  grid-template: 1fr/ 1fr;
+  margin-bottom: 1rem;
+  .index-item {
+    border-bottom: 1px solid $body-color;
+    margin: 0;
+    padding: 1rem;
+    text-decoration: none;
+    aside {
+      position: relative;
+      .index-icon {
+        position: absolute;
+        color: $secondary-text;
+        margin-right: 10px;
+      }
+      p {
+        color: $primary-text;
+        margin: 0 0 0 30px;
+      }
+      .overview {
+        color: $secondary-text;
+        font-size: 0.8rem;
+      }
     }
+    &:hover {
+      background: $body-hover-color;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
 }
 .sales-grid {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-bottom: 1rem;
+  .sales-item {
     display: grid;
-    grid-template: 1fr / 1fr;
-    margin-bottom: 1rem;
-    .sales-item {
-        display: grid;
-        grid-template: 1fr / 1fr 150px;
-        padding: 0.5rem 1rem;
-        text-decoration: none;
-        color: inherit;
-        border-bottom: 1px solid $body-color;
-        .units,
-        .date {
-            color: $primary-text;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .date {
-            margin-bottom: 0;
-        }
-        .price {
-            color: #01b87a;
-            font-weight: 600;
-            font-size: 2rem;
-            margin: 0;
-            &:before {
-                content: '$';
-            }
-        }
-        .product {
-            max-width: 60%;
-            text-transform: uppercase;
-            color: $secondary-text;
-            font-weight: 600;
-            font-size: 0.8rem;
-            @media (max-width:796px) {
-                max-width: 80%;
-            }
-        }
-        &:hover {
-            background: $body-hover-color;
-        }
-        &:last-of-type {
-            border: none;
-        }
+    grid-template: 1fr / 1fr 150px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid $body-color;
+    .units,
+    .date {
+      color: $primary-text;
+      font-weight: 600;
+      font-size: 1rem;
     }
+    .date {
+      margin-bottom: 0;
+    }
+    .price {
+      color: #01b87a;
+      font-weight: 600;
+      font-size: 2rem;
+      margin: 0;
+      &:before {
+        content: '$';
+      }
+    }
+    .product {
+      max-width: 60%;
+      text-transform: uppercase;
+      color: $secondary-text;
+      font-weight: 600;
+      font-size: 0.8rem;
+      @media (max-width:796px) {
+        max-width: 80%;
+      }
+    }
+    &:hover {
+      background: $body-hover-color;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
 }
 .products-grid {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  margin-bottom: 1rem;
+  .products-item {
     display: grid;
-    grid-template: 1fr / 1fr;
-    margin-bottom: 1rem;
-    .products-item {
-        display: grid;
-        grid-template: 1fr / 1fr 150px;
-        padding: 0.5rem 1rem;
-        text-decoration: none;
-        color: inherit;
-        border-bottom: 1px solid $body-color;
-        .price {
-            color: #01b87a;
-            font-weight: 600;
-            font-size: 2rem;
-            margin: 0;
-            &:before {
-                content: '$';
-            }
-        }
-        .product {
-            max-width: 60%;
-            text-transform: uppercase;
-            color: $secondary-text;
-            font-weight: 600;
-            font-size: 0.8rem;
-            @media (max-width:796px) {
-                max-width: 80%;
-            }
-        }
-        &:hover {
-            background: $body-hover-color;
-        }
-        &:last-of-type {
-            border: none;
-        }
+    grid-template: 1fr / 1fr 150px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid $body-color;
+    .price {
+      color: #01b87a;
+      font-weight: 600;
+      font-size: 2rem;
+      margin: 0;
+      &:before {
+          content: '$';
+      }
     }
+    .product {
+      max-width: 60%;
+      text-transform: uppercase;
+      color: $secondary-text;
+      font-weight: 600;
+      font-size: 0.8rem;
+      @media (max-width:796px) {
+          max-width: 80%;
+      }
+    }
+    &:hover {
+      background: $body-hover-color;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
 }

@@ -224,28 +224,32 @@ form fieldset button {
   margin: 0;
 }
 
-.details-grid {
+.about-grid {
   display: grid;
   grid-template: 1fr / 1fr;
 }
 
-.details-grid .top {
+.about-grid .top {
   padding: 1rem 0 1.5rem 0;
   grid-column: 1 / -1;
   background-color: #ffffff;
   border-bottom: 1px solid #dedee3;
 }
 
-.details-grid .top .details-name p {
+.about-grid .top .about-name p {
   margin: 0;
   color: #a7a7a7;
 }
 
-.details-grid .top .details-name h2 {
-  margin: 0.5rem;
+.about-grid .top .about-name h2 {
+  margin: 0.5rem 0;
 }
 
-.details-grid .top .tabs {
+.about-grid .top .crud a {
+  text-decoration: none;
+}
+
+.about-grid .top .tabs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: 1fr;
@@ -254,7 +258,7 @@ form fieldset button {
   list-style: none;
 }
 
-.details-grid .top .tabs .tab-item {
+.about-grid .top .tabs .tab-item {
   text-transform: uppercase;
   color: #a7a7a7;
   cursor: pointer;
@@ -265,35 +269,35 @@ form fieldset button {
 }
 
 @media (max-width: 576px) {
-  .details-grid .top .tabs .tab-item {
+  .about-grid .top .tabs .tab-item {
     text-align: center;
   }
 }
 
-.details-grid .top .tabs .tab-item span {
+.about-grid .top .tabs .tab-item span {
   margin-left: 5px;
 }
 
 @media (max-width: 576px) {
-  .details-grid .top .tabs .tab-item span {
+  .about-grid .top .tabs .tab-item span {
     display: none;
   }
 }
 
-.details-grid .top .tabs .tab-item:hover {
+.about-grid .top .tabs .tab-item:hover {
   color: #676767;
 }
 
-.details-grid .top .tabs .tab-item.tab-item-selected {
+.about-grid .top .tabs .tab-item.tab-item-selected {
   color: #414141;
   border-bottom: 2px solid #6ccfff;
 }
 
-.details-grid .outlet {
+.about-grid .outlet {
   grid-column: 1 / -1;
 }
 
-.details-grid .outlet > * {
+.about-grid .outlet > * {
   display: none;
 }
 

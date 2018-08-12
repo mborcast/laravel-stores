@@ -1,10 +1,10 @@
 @extends('layout', ['title' => $customer->name])
 @section('content')
 
-<div class="details-grid">
+<div class="about-grid">
     <section class="top">
       <div class="container">
-        <header class="details-name">
+        <header class="about-name">
           <p>Customer</p>
           <h2>{{ $customer->name }}</h2>
         </header>

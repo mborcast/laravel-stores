@@ -1,17 +1,19 @@
 @extends('layout', ['title' => $store->name])
 @section('content')
 
-<div class="details-grid">
+<div class="about-grid">
   <section class="top">
     <div class="container">
-      <header class="details-name">
+      <header class="about-name">
         <p>Store</p>
         <h2>{{ $store->name }}</h2>
       </header>
-      <a href="{{ route('stores-edit', $store->id) }}">
-        <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
-      </a>
-      <button class="button danger" onclick="destroy(this)"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+      <div class="crud">
+        <a href="{{ route('stores-edit', $store->id) }}">
+          <button class="button edit"><span><i class="fas fa-edit"></i></span>Editar</button>
+        </a>
+        <button class="button danger" onclick="destroy(this)"><span><i class="fas fa-eraser"></i></span>Eliminar</button>
+      </div>
 
       <a href="{{ route('stores-customers', $store->id) }}">
         <i class="fas fa-angle-right"></i> All customers

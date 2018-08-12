@@ -1,10 +1,10 @@
 @extends('layout', ['title' => 'Customers'])
 @section('content')
 
-<div class="details-grid">
+<div class="about-grid">
     <section class="top">
       <div class="container">
-        <header class="details-name">
+        <header class="about-name">
           <h2>Customers list</h2>
         </header>
       </div>

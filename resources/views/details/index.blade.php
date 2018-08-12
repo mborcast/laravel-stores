@@ -1,10 +1,10 @@
 @extends('layout', ['title' => 'Details'])
 @section('content')
 
-<div class="details-grid">
+<div class="about-grid">
     <section class="top">
       <div class="container">
-        <header class="details-name">
+        <header class="about-name">
           <h2>Details list</h2>
         </header>
       </div>
@@ -22,7 +22,7 @@
           <tr>
             <td>{{ $detail->id }}</td>
             <td>
-              <a href="{{ route('details-details', $detail->id) }}">
+              <a href="{{ route('about-details', $detail->id) }}">
                 {{ $detail->name }}
               </a>
             </td>
