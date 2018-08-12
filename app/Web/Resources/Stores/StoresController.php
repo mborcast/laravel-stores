@@ -22,6 +22,10 @@ class StoresController extends Controller {
       if ($request->ajax()) {
           return $lStores;
       }
+      $lPagesCount = $this->_storesService->getPagesCount();
+      if ($lCurrentPage > $lPagesCount) {
+        return view('404');
+      }
       return view('stores.index', [
           'stores' => $lStores,
           'current' => $lCurrentPage,
@@ -95,6 +99,9 @@ class StoresController extends Controller {
   }
   public function edit($id) {
     $lStore = $this->_storesService->get($id);
+    if ($lStore == null) {
+      return view('404');
+    }
     return view('stores.submit', [
       'title' => 'Edit store',
       'store' => $lStore
@@ -102,5 +109,8 @@ class StoresController extends Controller {
   }
   public function update(CreateStoresRequest $request, $id) {
     return $this->_storesService->update($id, $request->all());
+  }
+  public function destroy($id) {
+    return $this->_storesService->delete($id);
   }
 }

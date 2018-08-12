@@ -16,7 +16,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{ isset($store) ? asset('js/edit.js') : asset('js/create.js')}}"></script>
+<script src="{{ isset($store) ? asset('js/update.js') : asset('js/create.js')}}"></script>
 @endsection
 
 

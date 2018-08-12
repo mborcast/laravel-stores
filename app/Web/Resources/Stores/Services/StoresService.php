@@ -29,22 +29,12 @@ class StoresService implements StoresServiceInterface {
         return $this->_stores->update($id, $data);
     }
     public function delete($id) {
-        $lStore = $this->_stores->get($id);
-        if ($lStore == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        if ($this->_stores->delete($id)) {
-            return response()->json(
-                null, 
-                204
-            );
-        }
-        return response()->json(
-            ['message' => 'Deletion failed'], 
-            500
-        );
+      if ($this->_stores->delete($id)) {
+        return response()->json(null, 204);
+      }
+      return response()->json(
+        ['message' => 'Item deletion failed. Try again later.'], 
+        500 
+      );
     }
 }

@@ -18,7 +18,7 @@
           <p>No stores available.</p>
         @else    
           @foreach ($stores as $store)
-          <a class="index-item" href="{{ route('stores-details', $store->id) }}">
+          <a class="index-item" href="{{ route('stores-about', $store->id) }}">
             <aside>
               <span class="index-icon">
                 <i class="fas fa-store"></i>
