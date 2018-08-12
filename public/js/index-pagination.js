@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('index-pagination');
   $('.paginator-item').click(function() {
     selectLinkItem($(this));
     paginatePageInto($(this));
@@ -11,7 +10,6 @@ function selectLinkItem(element) {
 }
 function displayDataInto(data, container) {
   container.html('');
-  console.log(data);
   data.forEach((d) => {
     console.log(d);
     container.append(build(d));
