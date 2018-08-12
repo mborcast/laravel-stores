@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
 use LaravelStores\Web\Resources\Customers\Services\CustomersServiceInterface;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
+use LaravelStores\Web\Resources\Stores\Requests\CreateStoresRequest;
 
 class StoresController extends Controller {
   private const RELATIONSHIP_ITEMS_PP = 4;
   private $_storesService;
 
-  public function __construct(storesServiceInterface $storesService) {
+  public function __construct(StoresServiceInterface $storesService) {
     $this->_storesService = $storesService;
   }
   public function index(Request $request) {
@@ -83,5 +84,11 @@ class StoresController extends Controller {
       'current' => $lCurrentPage,
       'pages' => (int)ceil($lItemsCount / self::RELATIONSHIP_ITEMS_PP)
     ]);
+  }
+  public function create() {
+    return view('stores.create');
+  }
+  public function store(CreateStoresRequest $request) {
+    return $this->_storesService->create($request->all());
   }
 }

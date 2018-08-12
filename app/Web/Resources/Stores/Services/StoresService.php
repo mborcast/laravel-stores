@@ -14,10 +14,7 @@ class StoresService implements StoresServiceInterface {
         $this->_stores = $storesRepository;
     }    
     public function create($data) {
-        return response()->json(
-            $this->_stores->create($data),
-            201
-        );
+      return $this->_stores->create($data);
     }
     public function get($id) {
         return $this->_stores->get($id);

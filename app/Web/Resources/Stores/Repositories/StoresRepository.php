@@ -8,6 +8,7 @@ class StoresRepository extends ResourceRepository implements StoresRepositoryInt
 
     public function create($data) {
         return Store::create([
+          'name' => $data['name']
         ]);
     }
     public function get($id) {

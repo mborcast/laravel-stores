@@ -1,15 +1,23 @@
-@extends('layout')
-@section('title', 'Customers')
+@extends('layout', ['title' => 'Create store'])
 @section('content')
 
-<h1>Create store</h1>
+<div class="container">
+  <form class="create-form" action="">
+    <fieldset>
+      <legend><span><i class="fas fa-store-alt"></i></span>Create new store</legend>
+      <div>
+        <input id="store-name" type="text" placeholder="Store name" name="name" required>
+      </div>
+      <button class="button submit" data-endpoint="{{ route('stores-store') }}">Submit</button>
+    </fieldset>
+  </form>
+  <ul class="errors"></ul>
+</div>
 
 @endsection
 
 @section('scripts')
-<script>
-$(document).ready(function({
+<script src="{{ asset('js/create.js')}}"></script>
+@endsection
 
-});
-</script>
-@stop
+
