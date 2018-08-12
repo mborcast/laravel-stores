@@ -2,19 +2,18 @@ var deleteButton;
 function destroy(button) {
   deleteButton = $(button);
   swal({
-      title: 'Delete item?',
-      text: 'Deleted items cannot be recovered.',
-      icon: 'warning',
-      buttons: {
-        cancel: true,
-        delete: true
-      }
-    }).then((value) => {
-      if (value) {
-        deleteItem();
-      }
+    title: 'Delete item?',
+    text: 'Deleted items cannot be recovered.',
+    icon: 'warning',
+    buttons: {
+      cancel: true,
+      delete: true
     }
-  );
+  }).then((value) => {
+    if (value) {
+      deleteItem();
+    }
+  });
 }
 function deleteItem() {
   $.ajax({

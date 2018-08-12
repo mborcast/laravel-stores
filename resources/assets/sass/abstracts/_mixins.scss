@@ -3,3 +3,8 @@
       -moz-box-shadow: $shadow;
           box-shadow: $shadow;
 }
+@mixin appearance($appearence) {
+  -webkit-appearance: $appearence;
+     -moz-appearance: $appearence;
+          appearance: $appearence;
+}

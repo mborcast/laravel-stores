@@ -14,4 +14,5 @@ Route::group(['namespace' => 'Resources\Stores'], function(){
   Route::put('/stores/{id}', 'StoresController@update')->name('stores-update');
   // DELETE
   Route::delete('/stores/{id}', 'StoresController@destroy')->name('stores-destroy');
+  Route::delete('/stores', 'StoresController@batchDestroy')->name('stores-batch-destroy');
 });

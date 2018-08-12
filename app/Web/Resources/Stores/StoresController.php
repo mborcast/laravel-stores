@@ -104,4 +104,7 @@ class StoresController extends Controller {
   public function destroy($id) {
     return $this->storesService->delete($id);
   }
+  public function batchDestroy(Request $request) {
+    return $this->storesService->batchDelete($request->all());
+  }
 }

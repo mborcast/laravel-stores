@@ -48,6 +48,9 @@ form {
   span {
     margin-right: 10px;
   }
+  &.mini {
+    min-width: 50px;
+  }
   &.full {
     width: 100%;
   }

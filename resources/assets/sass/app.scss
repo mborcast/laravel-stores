@@ -97,7 +97,12 @@
   display: grid;
   grid-template: 1fr/ 1fr;
   margin-bottom: 1rem;
+  margin-top: 0;
   .index-item {
+    display: grid;
+    align-items: center;
+    grid-template: 1fr/ 1fr auto auto auto;
+    grid-gap: 10px;
     border-bottom: 1px solid $body-color;
     margin: 0;
     padding: 1rem;
@@ -118,12 +123,12 @@
         font-size: 0.8rem;
       }
     }
-    &:hover {
-      background: $body-hover-color;
-    }
     &:last-of-type {
       border: none;
     }
+  }
+  button {
+    z-index: 100;
   }
 }
 .sales-grid {
@@ -132,7 +137,7 @@
   margin-bottom: 1rem;
   .sales-item {
     display: grid;
-    grid-template: 1fr / 1fr 150px;
+    grid-template: 1fr / 1fr auto;
     padding: 0.5rem 1rem;
     text-decoration: none;
     color: inherit;
@@ -216,6 +221,95 @@
     }
     &:last-of-type {
       border: none;
+    }
+  }
+}
+
+
+
+
+
+$control-mark-color: white;
+
+$input-background-color: #fafbfc;
+$input-border-color: #d1d4d7;
+
+$input-hover-background-color: #ebebeb;
+
+.control {
+
+  font-size: 16px !important;
+  margin: 0 0.5rem !important;
+  font-weight: 400 !important;
+	position: relative;
+	display: block;
+  cursor: pointer;
+
+  @include appearance(none);
+
+  &.inline {
+    display: inline-block !important;
+  }
+
+  &:hover {
+    input {
+      &~ .control-indicator {
+        transition: all 100ms ease-in;
+        background: $input-hover-background-color;
+      }
+    }
+  }
+  .control-indicator {
+    width: 20px;
+    height: 20px;
+    background: $input-background-color;
+    border: 2px solid $input-border-color;
+    transition: all 100ms ease-in;
+
+    &:after {
+      position: absolute;
+      display: none;
+      content: '';
+    }
+  }
+  input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    &[type=checkbox] {
+      &~.control-indicator {
+        &:after {
+          width: 6px;
+          height: 12px;
+          transform: rotate(45deg);
+          border: solid $control-mark-color;
+          border-width: 0 2px 2px 0;
+          margin: auto;
+          top: -3px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+    }
+
+    &:focus {
+      &~ .control-indicator {
+        transition: all 100ms ease-in;
+        background: $input-hover-background-color;
+      }
+    }
+    &:checked {
+      &~ .control-indicator {
+        animation: tick 180ms ease-in;
+        background: #008eff;
+        border: 2px solid transparent;
+      }
+    }
+    &:checked {
+      &~ .control-indicator:after {
+        display: block;
+      }
     }
   }
 }

@@ -61,6 +61,10 @@ form fieldset button {
   margin-right: 10px;
 }
 
+.button.mini {
+  min-width: 50px;
+}
+
 .button.full {
   width: 100%;
 }
@@ -315,9 +319,16 @@ form fieldset button {
   display: grid;
   grid-template: 1fr/ 1fr;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .index-grid .index-item {
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  grid-template: 1fr/ 1fr auto auto auto;
+  grid-gap: 10px;
   border-bottom: 1px solid #dedee3;
   margin: 0;
   padding: 1rem;
@@ -344,12 +355,12 @@ form fieldset button {
   font-size: 0.8rem;
 }
 
-.index-grid .index-item:hover {
-  background: #eaecf8;
-}
-
 .index-grid .index-item:last-of-type {
   border: none;
+}
+
+.index-grid button {
+  z-index: 100;
 }
 
 .sales-grid {
@@ -360,7 +371,7 @@ form fieldset button {
 
 .sales-grid .sales-item {
   display: grid;
-  grid-template: 1fr / 1fr 150px;
+  grid-template: 1fr / 1fr auto;
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: inherit;
@@ -467,5 +478,79 @@ form fieldset button {
 
 .products-grid .products-item:last-of-type {
   border: none;
+}
+
+.control {
+  font-size: 16px !important;
+  margin: 0 0.5rem !important;
+  font-weight: 400 !important;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.control.inline {
+  display: inline-block !important;
+}
+
+.control:hover input ~ .control-indicator {
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  background: #ebebeb;
+}
+
+.control .control-indicator {
+  width: 20px;
+  height: 20px;
+  background: #fafbfc;
+  border: 2px solid #d1d4d7;
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+}
+
+.control .control-indicator:after {
+  position: absolute;
+  display: none;
+  content: '';
+}
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.control input[type=checkbox] ~ .control-indicator:after {
+  width: 6px;
+  height: 12px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  margin: auto;
+  top: -3px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.control input:focus ~ .control-indicator {
+  -webkit-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  background: #ebebeb;
+}
+
+.control input:checked ~ .control-indicator {
+  -webkit-animation: tick 180ms ease-in;
+          animation: tick 180ms ease-in;
+  background: #008eff;
+  border: 2px solid transparent;
+}
+
+.control input:checked ~ .control-indicator:after {
+  display: block;
 }
 

@@ -48,4 +48,10 @@ class StoresService implements StoresServiceInterface {
         500 
       );
     }
+    public function batchDelete($data) {
+      foreach ($data as $id) {
+        $this->stores->delete($id);
+      }
+      return response()->json(null, 204);
+    }
 }
