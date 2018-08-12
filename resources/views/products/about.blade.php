@@ -27,7 +27,7 @@
         <div class="sales">
           <div class="sales-grid">
             @foreach ($product->sales as $sale)
-            <a class="sales-item" href="{{ route('sales-details', $sale->id) }}">
+            <a class="sales-item" href="{{ route('sales-about', $sale->id) }}">
               <header>
                 <p class="units">{{ $sale->products[0]->pivot->units }} units</p>
                 <p class="product">{{ $sale->products[0]->name }}</p>

@@ -7,6 +7,9 @@
         <header class="about-name">
           <h2>Sales list</h2>
         </header>
+        <a href="{{ route('sales-create') }}">
+          <button class="button primary"><span><i class="fas fa-plus"></i></span>Create</button>
+        </a>
       </div>
     </section>
     <div class="container">
@@ -15,7 +18,7 @@
           <p>No sales available.</p>
         @else    
           @foreach ($sales as $sale)
-          <a class="sales-item" href="{{ route('sales-details', $sale->id) }}">
+          <a class="sales-item" href="{{ route('sales-about', $sale->id) }}">
             <header>
               <p class="units">{{ $sale->products[0]->pivot->units }} units</p>
               <p class="product">{{ $sale->products[0]->name }}</p>
@@ -28,11 +31,7 @@
           @endforeach
         @endif
       </div>
-      <ul class="paginator">
-      @for ($i = 1; $i <= $pages; $i++)
-        <li @if ($current != $i) class="paginator-item" @else class="paginator-item active" @endif data-container="sales-grid" data-page="{{$i}}">{{$i}}</li>
-      @endfor
-      </ul>
+      @include('shared.paginator', ['current' => $current, 'container' => 'sales-grid'])
     </div>
 </div>
 

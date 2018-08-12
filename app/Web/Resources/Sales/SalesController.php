@@ -5,26 +5,52 @@ namespace LaravelStores\Web\Resources\Sales;
 use LaravelStores\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
+use LaravelStores\Web\Shared\RelationshipsPaginator;
 
 class SalesController extends Controller {
-    private $_salesService;
-
+    private $salesService;
+    
     public function __construct(SalesServiceInterface $salesService) {
-        $this->_salesService = $salesService;
+      $this->salesService = $salesService;
     }
+
     public function index(Request $request) {
-        $lCurrentPage = ($request->page ? $request->page : 1);
-        $lSales = $this->_salesService->getPage($lCurrentPage);
-        if ($request->ajax()) {
-          return $lSales;
-        }
-        return view('sales.index', [
-            'sales' => $lSales,
-            'current' => $lCurrentPage,
-            'pages' => $this->_salesService->getPagesCount()
-        ]);
+      $lPage = $this->salesService->getPage(($request->page ? $request->page : 1));
+      if ($request->ajax()) {
+        return $lPage['sales'];
+      }
+      if ($lPage) {
+        return view('sales.index', $lPage);
+      }
+      return view('404');
     }
     public function find($id) {
-        return $this->_salesService->get($id);
+      $lSale = $this->salesService->get($id);
+      if ($lSale) {
+        return view('sales.about', ['sale' => $lSale]);
+      }
+      return view('404');
+    }
+    public function create() {
+      return view('sales.submit', ['title' => 'Create sale']);
+    }
+    public function store(CreateSalesRequest $request) {
+      return $this->salesService->create($request->all());
+    }
+    public function edit($id) {
+      $lSale = $this->salesService->get($id);
+      if ($lSale == null) {
+        return view('404');
+      }
+      return view('sales.submit', [
+        'title' => 'Edit sale',
+        'sale' => $lSale
+      ]);
+    }
+    public function update(CreateSalesRequest $request, $id) {
+      return $this->salesService->update($id, $request->all());
+    }
+    public function destroy($id) {
+      return $this->salesService->delete($id);
     }
 }
