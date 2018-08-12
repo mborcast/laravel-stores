@@ -13,7 +13,7 @@
         <label>Product price</label>
         <input type="number" placeholder="Product price" name="price" value="{{ isset($product) ? $product->price : '' }}" required>
       </div>
-      <button class="button primary submit" data-endpoint="{{ isset($product) ? route('stores-update', $product->id) : route('products-store') }}">Submit</button>
+      <button class="button primary submit" data-endpoint="{{ isset($product) ? route('products-update', $product->id) : route('products-store') }}">Submit</button>
     </fieldset>
   </form>
 </div>

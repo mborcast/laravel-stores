@@ -35,7 +35,7 @@ class ProductsService implements ProductsServiceInterface {
         'current' => $page
       ];
     }
-    public function update($data, $id) {
+    public function update($id, $data) {
       return $this->products->update($id, $data);
     }
     public function delete($id) {
