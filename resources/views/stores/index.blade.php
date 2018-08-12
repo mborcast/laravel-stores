@@ -30,11 +30,7 @@
           @endforeach
         @endif
       </div>
-      <ul class="paginator">
-      @for ($i = 1; $i <= $pages; $i++)
-        <li @if ($current != $i) class="paginator-item" @else class="paginator-item active" @endif data-container="index-grid" data-page="{{$i}}">{{$i}}</li>
-      @endfor
-      </ul>
+      @include('shared.paginator', ['current' => $current, 'container' => 'index-grid'])
     </div>
 </div>
 
