@@ -37,6 +37,6 @@ class StoresRepository implements StoresRepositoryInterface {
     ->get();
   }
   public function getPagesCount() {
-    return $this->paginator->calculateTotalPages(Store::count());
+    return $this->paginator->calculateMaxPages(Store::count());
   }
 }

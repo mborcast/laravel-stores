@@ -29,6 +29,6 @@ class ProductsRepository extends ResourceRepository implements ProductsRepositor
         ->get();
     }
     public function getPagesCount() {
-      return $this->calculateTotalPages(Product::count());
+      return $this->calculateMaxPages(Product::count());
     }
 }

@@ -31,6 +31,6 @@ class SalesRepository extends ResourceRepository implements SalesRepositoryInter
         ->get();
     }
     public function getPagesCount() {
-      return $this->calculateTotalPages(Sale::count());
+      return $this->calculateMaxPages(Sale::count());
     }
 }

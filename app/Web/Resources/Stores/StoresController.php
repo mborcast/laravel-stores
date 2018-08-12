@@ -9,14 +9,20 @@ use LaravelStores\Web\Resources\Customers\Services\CustomersServiceInterface;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Resources\Stores\Requests\CreateStoresRequest;
 use LaravelStores\Web\Shared\ResourcePaginator;
+use LaravelStores\Web\Shared\RelationshipsPaginator;
 
 class StoresController extends Controller {
   private $storesService;
   private $paginator;
+  private $relationshipsPaginator;
 
-  public function __construct(StoresServiceInterface $storesService, ResourcePaginator $paginator) {
+  public function __construct(
+    StoresServiceInterface $storesService, 
+    ResourcePaginator $paginator,
+    RelationshipsPaginator $relationshipsPaginator) {
     $this->storesService = $storesService;
     $this->paginator = $paginator;
+    $this->relationshipsPaginator = $relationshipsPaginator;
   }
   public function index(Request $request) {
     $lStoresPage = $this->storesService->getPage(($request->page ? $request->page : 1));
@@ -31,60 +37,72 @@ class StoresController extends Controller {
   public function find($id) {
     $lStore = $this->storesService->get($id);
     if ($lStore) {
-      return view('stores.about', [
-          'store' => $lStore
+      return view('stores.about', ['store' => $lStore]);
+    }
+    return view('404');
+  }
+
+  public function getCustomersIndex(Request $request, $id) {
+    $lStore = $this->storesService->get($id);
+    if (!$lStore) {
+      return view('404');
+    }
+    $lPagination = $this->relationshipsPaginator->paginateItems(
+      $lStore->customers,
+      ($request->page ? $request->page : 1)
+    );
+    if ($request->ajax()) {
+      return $lPagination['items'];
+    }
+    if ($lPagination) {
+      return view('customers.index', [
+        'customers' => $lPagination['items'],
+        'current' => $lPagination['current'],
+        'pages' => $lPagination['pages']
       ]);
     }
     return view('404');
   }
-  public function getCustomersIndex(Request $request, $id) {
-    $lCurrentPage = ($request->page ? $request->page : 1);
-    $lStore = $this->storesService->get($id);
-    if (!$lStore) {
-      if ($request->ajax()) {
-        return [];
-      }
-      return view('404');
-    }
-    $lItemsCount = count($lStore->customers);
-    $lPivotIdx = $this->paginator->getSkipIndex($lCurrentPage);
-    if ($lPivotIdx >= $lItemsCount) {
-      return view('404');
-    }
-    $lItems = $lStore->customers->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
-    if ($request->ajax()) {
-      return $lItems;
-    }
-    return view('customers.index', [
-      'customers' => $lItems,
-      'current' => $lCurrentPage,
-      'pages' => $this->paginator->calculateTotalPages($lItemsCount)
-    ]);
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function getSalesIndex(Request $request, $id) {
-    $lCurrentPage = ($request->page ? $request->page : 1);
     $lStore = $this->storesService->get($id);
     if (!$lStore) {
-      if ($request->ajax()) {
-        return [];
-      }
       return view('404');
     }
-    $lItemsCount = count($lStore->sales);
-    $lPivotIdx = $this->paginator->getSkipIndex($lCurrentPage);
-    if ($lPivotIdx >= $lItemsCount) {
-      return view('404');
-    }
-    $lItems = $lStore->sales->slice($lPivotIdx, $this->paginator->getMaxItemsPerPage())->values();
+    $lPagination = $this->relationshipsPaginator->paginateItems(
+      $lStore->sales,
+      ($request->page ? $request->page : 1)
+    );
     if ($request->ajax()) {
-      return $lItems;
+      return $lPagination['items'];
     }
-    return view('sales.index', [
-      'sales' => $lItems,
-      'current' => $lCurrentPage,
-      'pages' => $this->paginator->calculateTotalPages($lItemsCount)
-    ]);
+    if ($lPagination) {
+      return view('sales.index', [
+        'sales' => $lPagination['items'],
+        'current' => $lPagination['current'],
+        'pages' => $lPagination['pages']
+      ]);
+    }
+    return view('404');
   }
+
+
   public function create() {
     return view('stores.submit', [
       'title' => 'Create store'

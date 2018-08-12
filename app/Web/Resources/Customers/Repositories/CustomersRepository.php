@@ -29,6 +29,6 @@ class CustomersRepository extends ResourceRepository implements CustomersReposit
         ->get();
     }
     public function getPagesCount() {
-      return $this->calculateTotalPages(Customer::count());
+      return $this->calculateMaxPages(Customer::count());
     }
 }
