@@ -11,7 +11,6 @@
       <button class="button submit" data-endpoint="{{ route('stores-store') }}">Submit</button>
     </fieldset>
   </form>
-  <ul class="errors"></ul>
 </div>
 
 @endsection
