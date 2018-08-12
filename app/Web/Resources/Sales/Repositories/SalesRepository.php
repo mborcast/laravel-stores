@@ -15,8 +15,7 @@ class SalesRepository implements SalesRepositoryInterface {
     return Sale::create([
       'date' => $data['date'],
       'store_id' => $data['storeId'],
-      'product_id' => $data['productId'],
-      'units' => $data['units']
+      'customer_id' => $data['customerId']
     ]);
   }
   public function get($id) {
@@ -28,8 +27,7 @@ class SalesRepository implements SalesRepositoryInterface {
     if ($lProduct != null) {
       $lProduct->date = $data['date'];
       $lProduct->store_id = $data['storeId'];
-      $lProduct->product_id = $data['productId'];
-      $lProduct->units = $data['units'];
+      $lProduct->customer_id = $data['customerId'];
       $lProduct->save();
     }
     return $lProduct;

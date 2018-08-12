@@ -1,12 +1,15 @@
 <?php 
 
 namespace LaravelStores\Web\Resources\Details\Repositories;
-use LaravelStores\Web\Resources\Details\Detail;
+use LaravelStores\Web\Resources\Details\Detail; 
 
 class DetailsRepository implements DetailsRepositoryInterface {
     public function create($data) {
-        return Detail::create([
-        ]);
+      return Detail::create([
+        'sale_id' => $data['saleId'],
+        'product_id' => $data['productId'],
+        'units' => $data['units']
+      ]);
     }
     public function get($id) {
         return Detail::find($id);
@@ -17,7 +20,10 @@ class DetailsRepository implements DetailsRepositoryInterface {
     public function update($id, $data) {
         $lDetail = Detail::find($id);
         if ($lDetail != null) {
-            $lDetail->save();
+          $lDetail->sale_id = $data['saleId'];
+          $lDetail->product_id = $data['productId'];
+          $lDetail->units = $data['units'];
+          $lDetail->save();
         }
         return $lDetail;
     }

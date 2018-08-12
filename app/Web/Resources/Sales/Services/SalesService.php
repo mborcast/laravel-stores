@@ -4,16 +4,26 @@ namespace LaravelStores\Web\Resources\Sales\Services;
 
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Resources\Sales\Repositories\SalesRepositoryInterface;
+use LaravelStores\Web\Resources\Details\Repositories\DetailsRepositoryInterface;
 
 class SalesService implements SalesServiceInterface {
 
     private $sales;
-
-    public function __construct(SalesRepositoryInterface $salesRepository) {
+    private $details;
+    public function __construct(
+      SalesRepositoryInterface $salesRepository,
+      DetailsRepositoryInterface $detailsRepository) {
         $this->sales = $salesRepository;
+        $this->details = $detailsRepository;
     }    
     public function create($data) {
-      return $this->sales->create($data);
+      $lSale = $this->sales->create($data);
+      return $this->details->create([
+        'saleId' => $lSale->id,
+        'productId' => $data['productId'],
+        'units' => $data['units']
+      ]);
+      return $lSale->fresh();
     }
     public function get($id) {
       return $this->sales->get($id);

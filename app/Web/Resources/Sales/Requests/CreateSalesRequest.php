@@ -12,6 +12,7 @@ class CreateSalesRequest extends FormRequest {
       'date' => 'required|date',
       'units' => 'required|numeric',
       'storeId' => 'required|numeric',
+      'customerId' => 'required|numeric',
       'productId' => 'required|numeric'
     ];
   }
