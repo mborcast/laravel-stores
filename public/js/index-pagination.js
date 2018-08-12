@@ -71,6 +71,7 @@ function batchDelete() {
       }
     })
     .done((data) => {
+      console.log(data);
       selectLinkItem($('.paginator-item.active'));
       paginatePageInto($('.paginator-item.active'));
       swal({

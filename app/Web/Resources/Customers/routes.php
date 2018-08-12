@@ -13,4 +13,5 @@ Route::group(['namespace' => 'Resources\Customers'], function(){
   Route::put('/customers/{id}', 'CustomersController@update')->name('customers-update');
   // DELETE
   Route::delete('/customers/{id}', 'CustomersController@destroy')->name('customers-destroy');
+  Route::delete('/customers', 'CustomersController@batchDestroy')->name('customers-batch-destroy');
 });

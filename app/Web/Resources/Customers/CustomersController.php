@@ -83,4 +83,7 @@ class CustomersController extends Controller {
   public function destroy($id) {
     return $this->customersService->delete($id);
   }
+  public function batchDestroy(Request $request) {
+    return $this->customersService->batchDelete($request->all());
+  }
 }

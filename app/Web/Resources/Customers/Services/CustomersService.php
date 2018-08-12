@@ -47,4 +47,10 @@ class CustomersService implements CustomersServiceInterface {
         500 
       );
     }
+    public function batchDelete($data) {
+      foreach ($data as $id) {
+        $this->customers->delete($id);
+      }
+      return response()->json(null, 204);
+    }
 }

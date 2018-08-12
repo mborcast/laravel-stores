@@ -10,4 +10,5 @@ interface CustomersServiceInterface {
     function getItemsInPage($page);
     function update($id, $data);
     function delete($id);
+    function batchDelete($data);
 }
