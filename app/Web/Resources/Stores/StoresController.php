@@ -8,21 +8,17 @@ use LaravelStores\Web\Resources\Stores\Services\StoresServiceInterface;
 use LaravelStores\Web\Resources\Customers\Services\CustomersServiceInterface;
 use LaravelStores\Web\Resources\Sales\Services\SalesServiceInterface;
 use LaravelStores\Web\Resources\Stores\Requests\CreateStoresRequest;
-use LaravelStores\Web\Shared\ResourcePaginator;
 use LaravelStores\Web\Shared\RelationshipsPaginator;
 
 class StoresController extends Controller {
   private $storesService;
   private $paginator;
-  private $relationshipsPaginator;
 
   public function __construct(
     StoresServiceInterface $storesService, 
-    ResourcePaginator $paginator,
-    RelationshipsPaginator $relationshipsPaginator) {
+    RelationshipsPaginator $paginator) {
     $this->storesService = $storesService;
     $this->paginator = $paginator;
-    $this->relationshipsPaginator = $relationshipsPaginator;
   }
   public function index(Request $request) {
     $lStoresPage = $this->storesService->getPage(($request->page ? $request->page : 1));
@@ -47,7 +43,7 @@ class StoresController extends Controller {
     if (!$lStore) {
       return view('404');
     }
-    $lPagination = $this->relationshipsPaginator->paginateItems(
+    $lPagination = $this->paginator->paginateItems(
       $lStore->customers,
       ($request->page ? $request->page : 1)
     );
@@ -85,7 +81,7 @@ class StoresController extends Controller {
     if (!$lStore) {
       return view('404');
     }
-    $lPagination = $this->relationshipsPaginator->paginateItems(
+    $lPagination = $this->paginator->paginateItems(
       $lStore->sales,
       ($request->page ? $request->page : 1)
     );

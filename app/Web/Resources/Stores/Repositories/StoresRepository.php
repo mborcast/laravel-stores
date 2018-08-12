@@ -3,13 +3,13 @@
 namespace LaravelStores\Web\Resources\Stores\Repositories;
 use LaravelStores\Web\Resources\Stores\Store;
 use LaravelStores\Web\Shared\ResourceRepository;
-use LaravelStores\Web\Shared\ResourcePaginator;
+use LaravelStores\Web\Shared\PageCalculator;
 
 class StoresRepository implements StoresRepositoryInterface {
-  private $paginator;
+  private $pageCalculator;
 
-  public function __construct(ResourcePaginator $paginator) {
-    $this->paginator = $paginator;
+  public function __construct(PageCalculator $pageCalculator) {
+    $this->pageCalculator = $pageCalculator;
   }
   public function create($data) {
     return Store::create([
@@ -31,12 +31,12 @@ class StoresRepository implements StoresRepositoryInterface {
     return (Store::destroy($id) > 0);
   }
   public function getByPage($page) {
-    return Store::skip($this->paginator->getSkipIndex($page))
-    ->take($this->paginator->getMaxItemsPerPage())
+    return Store::skip($this->pageCalculator->getSkipIndex($page))
+    ->take($this->pageCalculator->getMaxItemsPerPage())
     ->with('customers.sales')
     ->get();
   }
   public function getPagesCount() {
-    return $this->paginator->calculateMaxPages(Store::count());
+    return $this->pageCalculator->calculateMaxPages(Store::count());
   }
 }

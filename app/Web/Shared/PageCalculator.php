@@ -2,7 +2,7 @@
 
 namespace LaravelStores\Web\Shared;
 
-class ResourcePaginator {
+class PageCalculator {
   private const ITEMS_PER_PAGE = 6;
   public function calculateMaxPages($totalItems) {
     return ($totalItems > 0) ? (int)ceil($totalItems / self::ITEMS_PER_PAGE) : 1;
