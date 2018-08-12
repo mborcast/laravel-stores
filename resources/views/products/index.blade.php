@@ -38,7 +38,6 @@
 
 @section('scripts')
 <script src="{{ asset('js/products-builder.js') }}"></script>
-
 <script src="{{ asset('js/index-pagination.js') }}"></script>
 @endsection
 
