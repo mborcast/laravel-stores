@@ -25,18 +25,8 @@ class StoresService implements StoresServiceInterface {
     public function getPagesCount() {
         return $this->_stores->getPagesCount();
     }
-    public function update($data, $id) {
-        $lStore = $this->_stores->update($data, $id);
-        if ($lStore == null) {
-            return response()->json(
-                ['message' => 'Not found'], 
-                404
-            );
-        }
-        return response()->json(
-            $lStore,
-            200
-        );
+    public function update($id, $data) {
+        return $this->_stores->update($id, $data);
     }
     public function delete($id) {
         $lStore = $this->_stores->get($id);

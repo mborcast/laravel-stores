@@ -86,9 +86,21 @@ class StoresController extends Controller {
     ]);
   }
   public function create() {
-    return view('stores.create');
+    return view('stores.submit', [
+      'title' => 'Create store'
+    ]);
   }
   public function store(CreateStoresRequest $request) {
     return $this->_storesService->create($request->all());
+  }
+  public function edit($id) {
+    $lStore = $this->_storesService->get($id);
+    return view('stores.submit', [
+      'title' => 'Edit store',
+      'store' => $lStore
+    ]);
+  }
+  public function update(CreateStoresRequest $request, $id) {
+    return $this->_storesService->update($id, $request->all());
   }
 }

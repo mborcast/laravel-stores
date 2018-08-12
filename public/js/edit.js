@@ -1,7 +1,6 @@
 var form;
 
 $(document).ready(function() {
-  console.log('create.js')
   form = $('.submit-form');
   $('.submit-form .submit').click(function(e) {
     e.preventDefault();
@@ -12,15 +11,15 @@ $(document).ready(function() {
 function create(endpoint) {
   $.ajax({
     url: endpoint,
-    type: "POST",
+    type: "PUT",
     data: form.serialize()
   })
   .done((data) => {
+    console.log(data);
     swal({
       icon: 'success',
-      text: 'Item created successfully.'
+      text: 'Item updated successfully.'
     });
-    form.find("input[type=text], textarea").val("");
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     var lResponse = jqXHR.responseJSON;

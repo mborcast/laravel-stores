@@ -18,7 +18,8 @@ class StoresRepository extends ResourceRepository implements StoresRepositoryInt
     public function update($id, $data) {
         $lStore = Store::find($id);
         if ($lStore != null) {
-            $lStore->save();
+          $lStore->name = $data['name'];
+          $lStore->save();
         }
         return $lStore;
     }
