@@ -14,7 +14,7 @@
         <p class="product">{{ $sale->products[0]->name }}</p>
         <div class="relationship">
           <p><span><i class="fas fa-store"></i></span>
-            <a href="{{route('customers-about', $sale->store->id)}}">
+            <a href="{{route('stores-about', $sale->store->id)}}">
               {{$sale->store->name}}
             </a>
           </p>
