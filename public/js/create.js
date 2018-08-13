@@ -1,14 +1,16 @@
 var form;
 
 $(document).ready(function() {
-  console.log('create.js')
   form = $('.submit-form');
+  resetForm();
   $('.submit-form .submit').click(function(e) {
     e.preventDefault();
     create($(this).data('endpoint'));
   });
 });
-
+function resetForm() {
+  form.find("input[type=text], input[type=number], input[type=date], textarea").val("");
+}
 function create(endpoint) {
   $.ajax({
     url: endpoint,
@@ -35,7 +37,7 @@ function create(endpoint) {
         window.location = endpoint + '/' + data.id;
       }
       else {
-        form.find("input[type=text], input[type=number], input[type=date], textarea").val("");
+        resetForm();
       }
     });
   })
