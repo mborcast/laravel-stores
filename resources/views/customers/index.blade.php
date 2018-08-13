@@ -33,7 +33,7 @@
       <div class="index-item">
         <aside>
           <span class="index-icon">
-            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user"></i>
           </span> 
           <p>{{ $customer->name }}</p>
           <p class="overview">{{ count($customer->sales) }} sales</p>
