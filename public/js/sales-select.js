@@ -65,7 +65,7 @@ function searchProducts(endpoint, name) {
   .done((data) => {
     productsList.html('');
     data.forEach((d) => {
-      productsList.append('<li onclick="setProduct('+d.id+',\''+d.name+'\')">'+d.name+'</li>');
+      productsList.append('<li onclick="setProduct('+d.id+',\''+(d.name).replace(/'/g, "\\'")+'\')">'+d.name+'</li>');
     });
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {})
