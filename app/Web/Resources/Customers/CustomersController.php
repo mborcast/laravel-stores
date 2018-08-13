@@ -46,7 +46,7 @@ class CustomersController extends Controller {
       return view('404');
     }
     $lPagination = $this->paginator->paginateItems(
-      $lCustomer->sales,
+      $lCustomer->sales()->with('store', 'customer', 'products')->orderBy('date', 'desc')->get(),
       ($request->page ? $request->page : 1)
     );
     if ($request->ajax()) {
@@ -54,6 +54,7 @@ class CustomersController extends Controller {
     }
     if ($lPagination) {
       return view('sales.index', [
+        'title' => $lCustomer->name,
         'sales' => $lPagination['items'],
         'current' => $lPagination['current'],
         'pages' => $lPagination['pages']

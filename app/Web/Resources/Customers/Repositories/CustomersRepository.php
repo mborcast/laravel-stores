@@ -19,7 +19,9 @@ class CustomersRepository implements CustomersRepositoryInterface {
     return Customer::where('name', 'like', $name.'%')->get();
   }
   public function get($id) {
-    return Customer::with('sales.store', 'sales.products')->find($id);
+    return Customer::with('sales.store', 'sales.products')
+    ->orderBy('name', 'asc')
+    ->find($id);
   }
   public function update($id, $data) {
     $lCustomer = Customer::find($id);
@@ -36,6 +38,7 @@ class CustomersRepository implements CustomersRepositoryInterface {
     return Customer::skip($this->pageCalculator->getSkipIndex($page))
     ->take($this->pageCalculator->getMaxItemsPerPage())
     ->with('sales.store')
+    ->orderBy('name', 'asc')
     ->get();
   }
   public function getPagesCount() {

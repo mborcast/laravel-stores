@@ -1,6 +1,6 @@
 function build(sale) {
   return '<div class="sales-item">'+
-          '<header>'+
+          '<aside>'+
             '<p class="date">'+(new Date(sale.date)).toLocaleDateString("en-GB", { year: 'numeric', month: 'short', day: 'numeric' })+'</p>'+
             '<p class="units">'+
               '<i class="fas fa-box-open"></i>'+
@@ -11,7 +11,8 @@ function build(sale) {
             '</p>'+
             '<p class="product">'+sale.products[0].name+'</p>'+
             '<p class="store">'+sale.store.name+'</p>'+
-          '</header>'+
+            '<p class="customer">'+sale.customer.name+'</p>'+
+          '</aside>'+
           '<a href="sales/'+sale.id+'">'+
             '<button type="button" class="mini button primary"><i class="fas fa-eye"></i></button>'+
           '</a>'+

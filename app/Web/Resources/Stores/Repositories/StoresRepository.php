@@ -16,7 +16,9 @@ class StoresRepository implements StoresRepositoryInterface {
     ]);
   }
   public function searchByName($name) {
-    return Store::where('name', 'like', $name.'%')->get();
+    return Store::where('name', 'like', $name.'%')
+    ->orderBy('name', 'asc')
+    ->get();
   }
   public function get($id) {
     return Store::with('customers.sales', 'sales.products')->find($id);
@@ -35,7 +37,8 @@ class StoresRepository implements StoresRepositoryInterface {
   public function getByPage($page) {
     return Store::skip($this->pageCalculator->getSkipIndex($page))
     ->take($this->pageCalculator->getMaxItemsPerPage())
-    ->with('customers.sales')
+    ->with('customers.sales', 'sales.products')
+    ->orderBy('name', 'asc')
     ->get();
   }
   public function getPagesCount() {

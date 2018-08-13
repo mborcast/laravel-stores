@@ -39,6 +39,7 @@ class SalesRepository implements SalesRepositoryInterface {
     return Sale::skip($this->pageCalculator->getSkipIndex($page))
     ->take($this->pageCalculator->getMaxItemsPerPage())
     ->with('store', 'customer', 'products')
+    ->orderBy('date', 'desc')
     ->get();
   }
   public function getPagesCount() {

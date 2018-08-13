@@ -46,7 +46,7 @@ class StoresController extends Controller {
       return view('404');
     }
     $lPagination = $this->paginator->paginateItems(
-      $lStore->customers,
+      $lStore->customers()->with('sales')->orderBy('name', 'asc')->get(),
       ($request->page ? $request->page : 1)
     );
     if ($request->ajax()) {
@@ -54,6 +54,7 @@ class StoresController extends Controller {
     }
     if ($lPagination) {
       return view('customers.index', [
+        'title' => $lStore->name,
         'customers' => $lPagination['items'],
         'current' => $lPagination['current'],
         'pages' => $lPagination['pages']
@@ -67,7 +68,7 @@ class StoresController extends Controller {
       return view('404');
     }
     $lPagination = $this->paginator->paginateItems(
-      $lStore->sales,
+      $lStore->sales()->with('store', 'customer', 'products')->orderBy('date', 'desc')->get(),
       ($request->page ? $request->page : 1)
     );
     if ($request->ajax()) {
@@ -75,6 +76,7 @@ class StoresController extends Controller {
     }
     if ($lPagination) {
       return view('sales.index', [
+        'title' => $lStore->name,
         'sales' => $lPagination['items'],
         'current' => $lPagination['current'],
         'pages' => $lPagination['pages']

@@ -286,33 +286,31 @@ form fieldset button {
   grid-template: 1fr / 1fr;
 }
 
-.about-grid .top {
-  padding: 1rem 0 1.5rem 0;
-  grid-column: 1 / -1;
+.about-grid header {
   background-color: #ffffff;
   border-bottom: 1px solid #dedee3;
+  padding: 2rem 1rem;
 }
 
-.about-grid .top .about-name p {
+.about-grid header h2 {
+  margin: 0.5rem 0;
+}
+
+.about-grid header h3 {
+  margin: 0 0 1rem 0;
+  color: #838383;
+}
+
+.about-grid header a {
+  text-decoration: none;
+}
+
+.about-grid header p {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
   color: #a7a7a7;
   margin-bottom: 0;
-}
-
-.about-grid .top .about-name h2 {
-  margin: 0.5rem 0;
-}
-
-.about-grid .top .about-price {
-  margin: 0 0 1.5rem 0;
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
-.about-grid .top .crud a {
-  text-decoration: none;
 }
 
 .index-grid {
@@ -353,14 +351,6 @@ form fieldset button {
 .index-grid .index-item aside .overview {
   color: #838383;
   font-size: 0.8rem;
-}
-
-.index-grid .index-item:last-of-type {
-  border: none;
-}
-
-.index-grid button {
-  z-index: 100;
 }
 
 .sales-grid {
@@ -429,14 +419,6 @@ form fieldset button {
 
 .sales-grid .sales-item .store:before {
   content: '@';
-}
-
-.sales-grid .sales-item:hover {
-  background: #eaecf8;
-}
-
-.sales-grid .sales-item:last-of-type {
-  border: none;
 }
 
 .products-grid {

@@ -1,24 +1,24 @@
 @extends('layout', ['title' => $sale->name])
 @section('content')
 
-<div class="about-grid">
-  <section class="top">
+<section class="about-grid">
+  <header>
     <div class="container">
-      <header class="about-name">
-        <p>Sale</p>
-        <h2>{{ $sale->products[0]->name }}</h2>
-      </header>
-      <div>
-        <p>{{ $sale->products[0]->pivot->units }} units</p>
-        <p>{{ $sale->store->name }}</p>
-        <p>{{ $sale->date->format('d M Y') }}</p>
+      <div class="sales-item">
+        <p class="date">{{ $sale->date->format('d M Y') }}</p>
+        <p class="units">
+          <i class="fas fa-box-open"></i><span class="times"><i class="fas fa-times"></i></span>{{ $sale->products[0]->pivot->units }}
+        </p>
+        <p class="product">{{ $sale->products[0]->name }}</p>
+        <p class="store">{{ $sale->store->name }}</p>
+        <p class="customer">{{ $sale->customer->name }}</p>
       </div>
-      <div class="crud">
+      <div>
         <button class="button danger" onclick="destroy(this)" data-index="{{ route('sales-index') }}"><span><i class="fas fa-eraser"></i></span>Delete</button>
       </div>
     </div>
-  </section>
-</div>
+  </header>
+</section>
 
 @endsection
 

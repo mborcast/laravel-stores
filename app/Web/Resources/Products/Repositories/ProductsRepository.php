@@ -17,7 +17,9 @@ class ProductsRepository implements ProductsRepositoryInterface {
     ]);
   }
   public function searchByName($name) {
-    return Product::where('name', 'like', $name.'%')->get();
+    return Product::where('name', 'like', $name.'%')
+    ->orderBy('name', 'asc')
+    ->get();
   }
   public function get($id) {
     return Product::with('sales.products')->find($id);
@@ -38,6 +40,7 @@ class ProductsRepository implements ProductsRepositoryInterface {
     return Product::skip($this->pageCalculator->getSkipIndex($page))
     ->take($this->pageCalculator->getMaxItemsPerPage())
     ->with('sales.store')
+    ->orderBy('name', 'asc')
     ->get();
   }
   public function getPagesCount() {

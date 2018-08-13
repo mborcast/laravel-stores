@@ -64,32 +64,27 @@
 .about-grid {
   display: grid;
   grid-template: 1fr / 1fr;
-  .top {
-    padding: 1rem 0 1.5rem 0;
-    grid-column: 1 / -1;
+
+  header {
     background-color: #ffffff;
     border-bottom: 1px solid $body-color;
-    .about-name {
-      p {
-        text-transform: uppercase;
-        font-weight: 600;
-        font-size: 0.8rem;
-        color: $light-text;
-        margin-bottom: 0;
-      }
-      h2 {
-        margin: 0.5rem 0;
-      }
+    padding: 2rem 1rem;
+    h2 {
+      margin: 0.5rem 0;
     }
-    .about-price {
-      margin: 0 0 1.5rem 0;
-      font-size: 2.5rem;
+    h3 {
+      margin: 0 0 1rem 0;
+      color: $secondary-text;
+    }
+    a {
+      text-decoration: none;
+    }
+    p {
+      text-transform: uppercase;
       font-weight: 600;
-    }
-    .crud {
-      a {
-        text-decoration: none;
-      }
+      font-size: 0.8rem;
+      color: $light-text;
+      margin-bottom: 0;
     }
   }
 }
@@ -123,12 +118,6 @@
         font-size: 0.8rem;
       }
     }
-    &:last-of-type {
-      border: none;
-    }
-  }
-  button {
-    z-index: 100;
   }
 }
 .sales-grid {
@@ -182,12 +171,6 @@
       &:before {
         content: '@';
       }
-    }
-    &:hover {
-      background: $body-hover-color;
-    }
-    &:last-of-type {
-      border: none;
     }
   }
 }

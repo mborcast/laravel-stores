@@ -7,10 +7,10 @@ function build(customer) {
             '<p>'+customer.name+'</p>'+
             '<p class="overview">'+customer.sales.length+' sales</p>'+
           '</aside>'+
-          '<a href="stores/'+customer.id+'">'+
+          '<a href="/customers/'+customer.id+'">'+
             '<button type="button" class="mini button primary"><i class="fas fa-eye"></i></button>'+
           '</a>'+
-          '<a href="stores/'+customer.id+'/edit">'+
+          '<a href="/customers/'+customer.id+'/edit">'+
             '<button type="button" class="mini button edit"><i class="fas fa-pencil-alt"></i></button>'+
           '</a>'+
           '<label class="control">'+

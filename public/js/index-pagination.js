@@ -91,8 +91,5 @@ function batchDelete() {
         content: lErrors
       });
     })
-    .always(() => {
-      batchDeleteButton.removeAttr("disabled");         
-    });
   });
 }
