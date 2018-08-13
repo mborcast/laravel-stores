@@ -32,17 +32,13 @@
       @foreach ($sales as $sale)
       <div class="sales-item">
         <aside>
-          <p class="date">{{ $sale->date->format('d M Y') }}</p>
           <p class="units">
             <i class="fas fa-box-open"></i>
-            <span class="times">
-              <i class="fas fa-times"></i>
-            </span>
+            <span class="times"><i class="fas fa-times"></i></span>
             {{ $sale->products[0]->pivot->units }}
           </p>
+          <p class="date">{{ $sale->date->format('d M Y') }}</p>
           <p class="product">{{ $sale->products[0]->name }}</p>
-          <p class="store">{{ $sale->store->name }}</p>
-          <p class="customer">{{ $sale->customer->name }}</p>
         </aside>
         <a href="{{ route('sales-about', $sale->id) }}">
           <button type="button" class="mini button primary"><i class="fas fa-eye"></i></button>

@@ -193,14 +193,16 @@
     color: inherit;
     border-bottom: 1px solid $body-color;
     .units,
-    .date {
+    .date, 
+    .product {
       text-transform: uppercase;
       font-weight: 600;
       font-size: 0.8rem;
+      margin: 0.5rem;
+      color: $secondary-text;
     }
     .units {
       font-size: 1.25rem;
-      margin: 1rem 0 0 0;
       color: $primary-text;
       .times {
         color: #f02037;
@@ -208,26 +210,22 @@
         font-size: 1rem;
       }
     }
-    .date {
-      margin-bottom: 0;
-    }
-    .product {
-      color: $secondary-text;
+    .details {
       text-transform: uppercase;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.6rem;
       max-width: 60%;
+      margin-left: 20px;
+      position: relative;
+      
       @media (max-width:796px) {
         max-width: 80%;
       }
-    }
-    .store {
-      color: $secondary-text;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: 0.8rem;
-      &:before {
-        content: '@';
+      span {
+        position: absolute;
+      }
+      p {
+        margin: 10px 0 0 25px;
       }
     }
   }
@@ -271,7 +269,46 @@
   }
 }
 
-
+.sale {
+  .date {
+    color: $primary-text;
+    font-size: 1rem;
+  }
+  .units {
+    color: $primary-text;
+    margin: 1rem 0 0 0;
+    font-size: 2rem;
+    .times {
+      color: #f02037;
+      margin: 0 2px;
+      font-size: 1.5rem;
+    }
+  }
+  .product {
+    color: $primary-text;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .relationship {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    p {
+      margin: 1rem 0 0.5rem 0;
+      span {
+        margin-right: 6px;
+      }
+    }
+    a {
+      color: $secondary-text;
+      margin: 1rem 0;
+      text-transform: uppercase;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
 
 
 

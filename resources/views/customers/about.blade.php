@@ -19,7 +19,7 @@
   <div class="container">
     <div class="cell-grid left">
       @if (count($customer->sales) > 0)
-      <a class="cell" href="{{ route('stores-sales', $customer->id) }}">
+      <a class="cell" href="{{ route('customers-sales', $customer->id) }}">
         <figure>
           <span><i class="fas fa-shopping-cart"></i></span>
           <h2>Sales</h2>

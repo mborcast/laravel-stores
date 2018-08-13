@@ -455,15 +455,17 @@ form fieldset button {
 }
 
 .sales-grid .sales-item .units,
-.sales-grid .sales-item .date {
+.sales-grid .sales-item .date,
+.sales-grid .sales-item .product {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.8rem;
+  margin: 0.5rem;
+  color: #838383;
 }
 
 .sales-grid .sales-item .units {
   font-size: 1.25rem;
-  margin: 1rem 0 0 0;
   color: #333;
 }
 
@@ -473,33 +475,27 @@ form fieldset button {
   font-size: 1rem;
 }
 
-.sales-grid .sales-item .date {
-  margin-bottom: 0;
-}
-
-.sales-grid .sales-item .product {
-  color: #838383;
+.sales-grid .sales-item .details {
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   max-width: 60%;
+  margin-left: 20px;
+  position: relative;
 }
 
 @media (max-width: 796px) {
-  .sales-grid .sales-item .product {
+  .sales-grid .sales-item .details {
     max-width: 80%;
   }
 }
 
-.sales-grid .sales-item .store {
-  color: #838383;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 0.8rem;
+.sales-grid .sales-item .details span {
+  position: absolute;
 }
 
-.sales-grid .sales-item .store:before {
-  content: '@';
+.sales-grid .sales-item .details p {
+  margin: 10px 0 0 25px;
 }
 
 .products-grid {
@@ -548,6 +544,53 @@ form fieldset button {
 
 .products-grid .products-item:last-of-type {
   border: none;
+}
+
+.sale .date {
+  color: #333;
+  font-size: 1rem;
+}
+
+.sale .units {
+  color: #333;
+  margin: 1rem 0 0 0;
+  font-size: 2rem;
+}
+
+.sale .units .times {
+  color: #f02037;
+  margin: 0 2px;
+  font-size: 1.5rem;
+}
+
+.sale .product {
+  color: #333;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.sale .relationship {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.sale .relationship p {
+  margin: 1rem 0 0.5rem 0;
+}
+
+.sale .relationship p span {
+  margin-right: 6px;
+}
+
+.sale .relationship a {
+  color: #838383;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+.sale .relationship a:hover {
+  text-decoration: underline;
 }
 
 .control {
