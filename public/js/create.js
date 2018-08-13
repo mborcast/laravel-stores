@@ -18,9 +18,26 @@ function create(endpoint) {
   .done((data) => {
     swal({
       icon: 'success',
-      text: 'Item created successfully.'
+      text: 'Item created successfully.',
+      buttons: {
+        createNew: {
+          text: 'Create another',
+          value: false
+        },
+        checkNew: {
+          text: 'Go to created',
+          className: 'button primary',
+          value: true
+        }
+      }
+    }).then((goToNew) => {
+      if (goToNew) {
+        window.location = endpoint + '/' + data.id;
+      }
+      else {
+        form.find("input[type=text], input[type=number], input[type=date], textarea").val("");
+      }
     });
-    form.find("input[type=text], input[type=number], input[type=date], textarea").val("");
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
     console.log(jqXHR.responseText);
