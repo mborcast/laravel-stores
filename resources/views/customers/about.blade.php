@@ -17,11 +17,16 @@
     </div>
   </header>
   <div class="container">
-    @if (count($customer->sales) > 0)
-    <a href="{{ route('customers-sales', $customer->id) }}">
-      <i class="fas fa-angle-right"></i> All sales
-    </a>
-    @endif
+    <div class="cell-grid left">
+      @if (count($customer->sales) > 0)
+      <a class="cell" href="{{ route('stores-sales', $customer->id) }}">
+        <figure>
+          <span><i class="fas fa-shopping-cart"></i></span>
+          <h2>Sales</h2>
+        </figure>
+      </a>
+      @endif
+    </div>
   </div>
 </section>
 

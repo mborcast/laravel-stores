@@ -18,11 +18,16 @@
     </div>
   </header>
   <div class="container">
-    @if (count($product->sales) > 0)
-    <a href="{{ route('products-sales', $product->id) }}">
-      <i class="fas fa-angle-right"></i> All sales
-    </a>
-    @endif
+    <div class="cell-grid">
+      @if (count($product->sales) > 0)
+      <a class="cell" href="{{ route('stores-sales', $product->id) }}">
+        <figure>
+          <span><i class="fas fa-shopping-cart"></i></span>
+          <h2>Sales</h2>
+        </figure>
+      </a>
+      @endif
+    </div>
   </div>
 </section>
 

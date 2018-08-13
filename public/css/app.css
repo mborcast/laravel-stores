@@ -216,10 +216,16 @@ form fieldset button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.cell-grid.left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
 }
 
 @media (max-width: 1200px) {
@@ -263,7 +269,7 @@ form fieldset button {
       -ms-flex-pack: center;
           justify-content: center;
   color: #fff;
-  background-color: #1abc9c;
+  background-color: #5dbccf;
   text-decoration: none;
   height: 100%;
   border: 1px solid #dedee3;
@@ -280,7 +286,7 @@ form fieldset button {
 }
 
 .cell-grid .cell:hover {
-  background-color: #16a186;
+  background-color: #39aac0;
 }
 
 .x-x {

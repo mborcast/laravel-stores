@@ -17,16 +17,24 @@
     </div>
   </header>
   <div class="container">
-    @if (count($store->customers) > 0)
-    <a href="{{ route('stores-customers', $store->id) }}">
-      <i class="fas fa-angle-right"></i> All customers
-    </a>
-    @endif
-    @if (count($store->sales) > 0)
-    <a href="{{ route('stores-sales', $store->id) }}">
-      <i class="fas fa-angle-right"></i> All sales
-    </a>
-    @endif
+    <div class="cell-grid left">
+      @if (count($store->customers) > 0)
+      <a class="cell" href="{{ route('stores-customers', $store->id) }}">
+        <figure>
+          <span><i class="fas fa-users"></i></span>
+          <h2>Customers</h2>
+        </figure>
+      </a>
+      @endif
+      @if (count($store->sales) > 0)
+      <a class="cell" href="{{ route('stores-sales', $store->id) }}">
+        <figure>
+          <span><i class="fas fa-shopping-cart"></i></span>
+          <h2>Sales</h2>
+        </figure>
+      </a>
+      @endif
+    </div>
   </div>
 </section>
 @endsection
