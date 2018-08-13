@@ -15,10 +15,11 @@ function create(endpoint) {
     data: form.serialize()
   })
   .done((data) => {
-    console.log(data);
     swal({
       icon: 'success',
-      text: 'Item updated successfully.'
+      text: 'Item updated successfully.',
+    }).then(() => {
+      window.location = endpoint;
     });
   })
   .fail((jqXHR, ajaxOptions, thrownError) => {
