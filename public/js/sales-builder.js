@@ -13,7 +13,7 @@ function build(sale) {
             '<button type="button" class="mini button primary"><i class="fas fa-eye"></i></button>'+
           '</a>'+
           '<label class="control">'+
-            '<input type="checkbox" name="deleted[]" value="{{$sale->id}}">'+
+            '<input type="checkbox" name="deleted[]" value="'+sale.id+'">'+
             '<div class="control-indicator"></div>'+
           '</label>'+
         '</div>';
