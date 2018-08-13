@@ -4,7 +4,9 @@
 <div class="container">
   <form class="submit-form">
     <fieldset>
-      <legend><span><i class="fas fa-box-open"></i></span>{{$title}}</legend>
+      <legend>
+        <h2><span><i class="fas fa-box-open"></i></span>{{$title}}</h2>
+      </legend>
       <input id="store-id-input" type="hidden" name="storeId">
       <input id="product-id-input" type="hidden" name="productId">
       <input id="customer-id-input" type="hidden" name="customerId">

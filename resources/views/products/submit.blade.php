@@ -4,7 +4,9 @@
 <div class="container">
   <form class="submit-form">
     <fieldset>
-      <legend><span><i class="fas fa-box-open"></i></span>{{$title}}</legend>
+      <legend>
+        <h2><span><i class="fas fa-box-open"></i></span>{{$title}}</h2>
+      </legend>
       <div>
         <label>Product name</label>
         <input type="text" placeholder="Product name" name="name" value="{{ isset($product) ? $product->name : '' }}" required>

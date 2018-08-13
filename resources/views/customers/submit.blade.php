@@ -4,7 +4,9 @@
 <div class="container">
   <form class="submit-form">
     <fieldset>
-      <legend><span><i class="fas fa-user-circle"></i></span>{{$title}}</legend>
+      <legend>
+        <h2><span><i class="fas fa-user-circle"></i></span>{{$title}}</h2>
+      </legend>
       <div>
         <label>Customer name</label>
         <input type="text" placeholder="Customer name" name="name" value="{{ isset($customer) ? $customer->name : '' }}" required>
